@@ -1,0 +1,8 @@
+page-customer {
+  .submitCheck {
+    min-height: 30px;
+    > div {
+      background-color: color($colors, primary);
+    }
+  }
+}

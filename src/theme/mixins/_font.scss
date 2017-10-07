@@ -1,0 +1,57 @@
+@mixin font-variant($color: #555, $text-percent: 35%, $link-percent: 40%, $hover-color: #fff) {
+  color: lighten($color, $text-percent);
+  a {
+    color: lighten($color, $link-percent);
+    &:hover {
+      color: $hover-color;
+    }
+    &.list-group-item {
+      &:hover,
+      &:focus {
+        background-color: inherit;
+      }
+    }
+  }
+  .nav {
+    .caret {
+      border-top-color: lighten($color, $text-percent);
+      border-bottom-color: lighten($color, $text-percent);
+    }
+    > li {
+      > a {
+        color: lighten($color, $link-percent);
+        &:hover,
+        &:focus {
+          color: $hover-color;
+          background-color: darken($color, 5%);
+          .caret {
+            border-top-color: $hover-color;
+            border-bottom-color: $hover-color;
+          }
+        }
+      }
+    }
+    .open > a {
+      background-color: darken($color, 5%);
+    }
+  }
+  &.navbar .nav {
+    > li.active > a {
+      color: $hover-color;
+      background-color: darken($color, 5%);
+    }
+  }
+  .open > a {
+    &,
+    &:hover,
+    &:focus {
+      color: $hover-color;
+    }
+  }
+  .text-muted {
+    color: lighten($color, $text-percent - 5%) !important;
+  }
+  .icon-muted {
+    color: lighten($color, $text-percent - 30%) !important;
+  }
+}

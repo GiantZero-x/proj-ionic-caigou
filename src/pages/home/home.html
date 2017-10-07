@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>首页
+      <ion-icon name="camera" class="homeCamera" (tap)="scan()"></ion-icon>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <span [navPush]="'SearchPage'" class="mainSearch"><ion-icon name="search"></ion-icon>产品 / 商铺 / 客户</span>
+  <div class="homeLogo">
+    <img src="assets/icon/logo.png">
+  </div>
+  <ion-card>
+    <ion-card-header class="wrapper-sm text-lg p-b-none">本周</ion-card-header>
+    <ion-card-content style="border-bottom: 1px solid #ccc;">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 class="text-sm">已接待客户 <strong
+            class="text-success text-lg">{{homeData.week.customers}}</strong></ion-col>
+          <ion-col col-6 class="text-sm">已采购商品 <strong
+            class="text-success text-lg">{{homeData.week.products}}</strong></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+    <ion-card-header class="wrapper-sm text-lg p-b-none">本月</ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 class="text-sm">已接待客户 <strong
+            class="text-success text-lg">{{homeData.month.customers}}</strong></ion-col>
+          <ion-col col-6 class="text-sm">已采购商品 <strong
+            class="text-success text-lg">{{homeData.month.products}}</strong></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

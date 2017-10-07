@@ -1,0 +1,61 @@
+$text-color: map_get($colors, dark);
+$link-color: #2e3e4e;
+
+.bg-light {
+  @include color-variant(map_get($colors, light), 2.5%, 5%, 2.5%, 5%);
+  color: $text-color;
+}
+
+.bg-muted {
+  @include color-variant(map_get($colors, muted), 2.5%, 5%, 2.5%, 5%);
+  @include font-variant(map_get($colors, muted), 45%, 50%);
+}
+
+.bg-dark {
+  @include color-variant(map_get($colors, dark));
+  @include font-variant(map_get($colors, dark), 45%, 50%);
+}
+
+.bg-primary {
+  @include color-variant(map_get($colors, primary));
+  @include font-variant(map_get($colors, primary), 35%, 50%);
+}
+
+.bg-success {
+  @include color-variant(map_get($colors, success));
+  @include font-variant(map_get($colors, success), 35%, 50%);
+}
+
+.bg-info {
+  @include color-variant(map_get($colors, info));
+  @include font-variant(map_get($colors, info), 35%, 50%);
+}
+
+.bg-warning {
+  @include color-variant(map_get($colors, warning));
+  @include font-variant(map_get($colors, warning), 35%, 50%);
+}
+
+.bg-danger {
+  @include color-variant(map_get($colors, danger));
+  @include font-variant(map_get($colors, danger), 35%, 50%);
+}
+
+.bg-white {
+  background-color: #fff;
+  color: $text-color;
+  a {
+    color: $link-color;
+    &:hover {
+      color: darken($link-color, 10%);
+    }
+  }
+}
+
+.bg-white-only {
+  background-color: #fff;
+}
+
+.bg-empty {
+  background-color: transparent;
+}

@@ -1,0 +1,115 @@
+<!--
+  Generated template for the AroundProductPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>逛商铺</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (tap)="handleExit()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-content (tap)="changeStore()" class="text-md">
+      <small>商铺名称：</small>
+      <span class="text-muted" [hidden]="!!stoInfo.cus_short_name" style="display: inline-block; width: 200px">请先点击选择商铺</span>
+      <strong class="text-primary">{{stoInfo.cus_short_name}}</strong>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list class="detail-list">
+    <ion-list-header no-margin padding-right="16px">
+      录入采购产品
+      <ion-icon name="cart" class="text-xl" color="primary" [hidden]="!cartNum" item-end (tap)="goToCart()">
+        <ion-badge color="danger">{{cartNum}}</ion-badge>
+      </ion-icon>
+    </ion-list-header>
+    <form #editForm="ngForm" (keyup)="closeKeyBoard($event)">
+      <ion-item>
+        商品图片
+        <small>最多可上传8张图片, 单张大小<=2M, 长按删除</small>
+        <ion-row>
+          <ion-col col-3 col-md-2 col-lg-1 *ngFor="let img of currProduct.img;index as i" class="product-img">
+            <img [src]="img | pictureHost" [picture-slider]="[i, currProduct.img, true]">
+          </ion-col>
+          <ion-col col-3 col-md-2 col-lg-1 [hidden]="currProduct.img > 9">
+            <button ion-button color="light" (tap)="uploadCard()">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-label>产品名</ion-label>
+        <ion-input type="text" name="pro_name" [(ngModel)]="currProduct.pro_name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label necessary >单价</ion-label>
+        <ion-input type="number"
+                   name="pro_price"
+                   [(ngModel)]="currProduct.pro_price"
+                   required
+                   #pro_price="ngModel"
+                   [pattern]="helper.state.VALID.float.rule"
+        ></ion-input>
+      </ion-item>
+      <p [show-err]="[pro_price.errors, submitted, 'float']"></p>
+      <ion-item>
+        <ion-label necessary>装箱数</ion-label>
+        <ion-input type="number"
+                   name="pro_box_quantity"
+                   [(ngModel)]="currProduct.pro_box_quantity"
+                   required
+                   #pro_box_quantity="ngModel"
+                   [pattern]="helper.state.VALID.integer.rule"
+        ></ion-input>
+      </ion-item>
+      <p [show-err]="[pro_box_quantity.errors, submitted, 'integer']"></p>
+      <ion-item>
+        <ion-label>体积(m³)</ion-label>
+        <ion-input type="number"
+                   name="pro_volume"
+                   [(ngModel)]="currProduct.pro_volume"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>重量</ion-label>
+        <ion-input type="text" name="pro_weight" [(ngModel)]="currProduct.pro_weight"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label necessary>单位</ion-label>
+        <ion-input type="text"
+                   name="pro_unit"
+                   [(ngModel)]="currProduct.pro_unit"
+                   #pro_unit="ngModel"
+                   required></ion-input>
+      </ion-item>
+      <p [show-err]="[pro_unit.errors, submitted]"></p>
+      <ion-item>
+        <ion-label>件数</ion-label>
+        <ion-input type="text" name="pro_quantity" [(ngModel)]="currProduct.pro_quantity"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>备注</ion-label>
+        <ion-textarea name="pro_detail" [(ngModel)]="currProduct.pro_detail" autosize></ion-textarea>
+      </ion-item>
+    </form>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <button ion-button block (tap)="submitCheck(editForm)" [disabled]="disSubmit()">
+    添加至采购车
+    <ion-icon name="send" margin-left></ion-icon>
+  </button>
+</ion-footer>

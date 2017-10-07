@@ -1,0 +1,59 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
+  <div padding>
+    <ion-row>
+      <ion-col>
+        <img class="logo" [src]="logoImage"/>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <form #loginForm="ngForm" (keyup)="quickLogin($event.which, loginForm)">
+          <ion-list inset class="no-border text-justify-list">
+            <ion-item>
+              <ion-label>用户名</ion-label>
+              <ion-input type="text"
+                         [(ngModel)]="loginInfo.username"
+                         name="username"
+                         #username="ngModel"
+                         spellcheck="false"
+                         autocapitalize="off"
+                         required
+                         clearInput></ion-input>
+            </ion-item>
+            <p [show-err]="[username.errors, submitted]"></p>
+            <ion-item>
+              <ion-label>密码</ion-label>
+              <ion-input type="password"
+                         [(ngModel)]="loginInfo.password"
+                         name="password"
+                         #password="ngModel"
+                         [clearOnEdit]="false"
+                         required
+                         clearInput></ion-input>
+            </ion-item>
+            <p [show-err]="[password.errors, submitted]"></p>
+          </ion-list>
+        </form>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button block (tap)="login(loginForm)">登录</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div>
+          <strong class="text-white">浙江商翔网络科技股份有限公司</strong>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+

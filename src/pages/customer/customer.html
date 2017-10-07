@@ -1,0 +1,88 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>我的客户</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (tap)="handleAdd()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-searchbar [(ngModel)]="searchKey"
+                   (ionInput)="doRefresh()"
+                   #customerSearch
+                   placeholder="姓名/手机号"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+   <ion-refresher-content pullingIcon="arrow-dropdown"
+                          pullingText="下拉刷新"
+                          refreshingSpinner="bubbles"
+                          refeshingText="正在刷新...">
+   </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list radio-group [(ngModel)]="checkId">
+    <ion-item-group [hidden]="secList.length === 0">
+      <ion-item-divider sticky color="light">
+        <ion-label>老客户</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label style="overflow-x: auto;margin-bottom: 0;padding-bottom: 17px;">
+          <button *ngFor="let cus of secList" class="m-r-sm" ion-button
+                  [color]="checkId === cus.cus_id ? 'primary': 'light'" small
+                  (tap)="isCheck ? (checkId = cus.cus_id) : handleCheck(cus.cus_id)">
+            {{cus.cus_short_name}}
+          </button>
+        </ion-label>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider sticky="light" [hidden]="secList.length === 0">
+        <ion-label>
+          {{customerSearch.value ? '查询结果' : '客户列表'}}
+        </ion-label>
+      </ion-item-divider>
+      <div *ngIf="isCheck; else buttonItem">
+        <ion-item *ngFor="let cus of list">
+          <ion-label>
+            {{cus.cus_short_name}}
+          </ion-label>
+
+          <small ion-note item-end class="text-muted">
+            {{cus.link_mans[0] && cus.link_mans[0].cusl_tel}}
+          </small>
+          <ion-radio [value]="cus.cus_id"></ion-radio>
+        </ion-item>
+      </div>
+      <ng-template #buttonItem>
+        <button ion-item *ngFor="let cus of list" (tap)="handleCheck(cus.cus_id)">
+          {{cus.cus_short_name}}
+          <span ion-note item-end class="text-sm">
+            {{cus.link_mans[0] && cus.link_mans[0].cusl_tel}}
+          </span>
+        </button>
+      </ng-template>
+      <p [hidden]="!hasMore && list.length === 0" class="scroll-end">已加载全部</p>
+      <ion-item [hidden]="list.length !== 0" text-center>
+        <button clear ion-button (tap)="handleAdd()">暂无客户，添加一个？</button>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="10%" [enabled]="hasMore">
+
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载...">
+
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ion-footer *ngIf="isCheck">
+  <button ion-button [disabled]="!checkId" (tap)="submitCheck()" block>
+    {{checkId ? '选好了， 走起！' : '请选择客户！'}}
+  </button>
+</ion-footer>

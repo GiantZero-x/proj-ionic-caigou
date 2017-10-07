@@ -1,0 +1,23 @@
+// 颜色混入
+@mixin color-variant($color: #555, $lt-percent: 5%, $lter-percent: 10%, $dk-percent: 5%, $dker-percent: 10%) {
+  background-color: $color;
+  &.lt,
+  .lt {
+    background-color: lighten($color, $lt-percent);
+  }
+  &.lter,
+  .lter {
+    background-color: lighten($color, $lter-percent);
+  }
+  &.dk,
+  .dk {
+    background-color: darken($color, $dk-percent);
+  }
+  &.dker,
+  .dker {
+    background-color: darken($color, $dker-percent);
+  }
+  .bg {
+    background-color: $color;
+  }
+}

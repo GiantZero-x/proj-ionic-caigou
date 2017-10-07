@@ -1,0 +1,120 @@
+// 搜索框
+.mainSearch {
+  display: block;
+  padding: 0 15px;
+  line-height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  color: #ccc;
+  margin-bottom: 10px;
+  .icon {
+    position: relative;
+    top: 2px;
+    margin-right: 5px;
+  }
+}
+
+// 名片
+ion-card.detail-card {
+  text-align: center;
+  max-width: 80%;
+  margin: 10px auto;
+  min-height: 105px;
+  .show-card {
+    text-align: center;
+    img {
+      max-width: 100%;
+      max-height: 300px;
+    }
+  }
+}
+
+ion-list.detail-list {
+  .input-wrapper {
+    min-width: 50px;
+    ion-label {
+      color: map_get($colors, muted)
+    }
+  }
+
+  ion-note.note {
+    color: map_get($colors, dark);
+    font-size: 0.8em;
+    white-space: normal;
+    word-break: break-all;
+  }
+}
+
+// 图片圆角
+img {
+  border-radius: 3px;
+}
+
+//icon上的badge
+ion-icon {
+  position: relative;
+  ion-badge[class^=badge] {
+    position: absolute;
+    top: -9px;
+    right: -8px;
+    border-radius: 10px;
+    padding: 3px 6px 3px 5px;
+    box-shadow: 0 0 0 2px #fff;
+  }
+}
+
+// 必填项
+[necessary] {
+  &:after {
+    content: '*';
+    color: #f00;
+    position: absolute;
+  }
+}
+
+// 自动验证下边框变色
+.item-inner, .item-input {
+  border-bottom-color: #dedede !important;
+  box-shadow: none !important;
+}
+
+// label文字两端对齐
+.text-justify-list ion-label {
+  width: 50px;
+  text-align: justify;
+  text-align-last: justify;
+}
+
+// 错误提示
+.errmsg {
+  color: color($colors, danger);
+  width: 100%;
+  text-align: center;
+  margin: -19px 0 0;
+  position: absolute;
+  z-index: 5;
+  display: none;
+  font-weight: bold;
+  &.show {
+    display: block;
+  }
+}
+
+// 防止输入控件获取焦点后下方大片空白
+div.scroll-content {
+  padding-bottom: 0 !important;
+}
+
+// 无头部alert
+.no-alert-head {
+  color: #ccc;
+  .alert-head {
+    padding: 0;
+  }
+}
+
+// 显示已加载全部
+.scroll-end{
+  text-align: center;
+  color: #888;
+}

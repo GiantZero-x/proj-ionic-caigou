@@ -1,0 +1,90 @@
+<!--
+  Generated template for the ProductPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-toolbar *ngIf="isCheck; else listTitle">
+    <ion-buttons start>
+      <button ion-button (tap)="dismiss()">取消</button>
+    </ion-buttons>
+
+    <ion-title>选择产品</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (tap)="dismiss(true)" strong [disabled]="!checkId">确定</button>
+      <button ion-button icon-only (tap)="handleAdd()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ng-template #listTitle>
+    <ion-navbar>
+      <ion-title>我的产品</ion-title>
+
+      <ion-buttons end>
+        <button ion-button icon-only (tap)="handleAdd()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ng-template>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar
+      [(ngModel)]="searchKey"
+      (ionInput)="doRefresh()"
+      placeholder="{{isCheck ? '产品名' : '产品名 / 商铺名' }}">
+    </ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown"
+                           pullingText="下拉刷新"
+                           refreshingSpinner="circles"
+                           refreshingText="正在刷新..."
+    ></ion-refresher-content>
+  </ion-refresher>
+  <ion-list radio-group [(ngModel)]="checkId">
+
+    <div *ngIf="isCheck; else item">
+      <ion-item *ngFor="let product of list">
+        <ion-label>{{product.pro_name || '暂无品名'}}
+          <small class="text-danger">(单价：{{product.pro_price || '暂无单价'}})</small>
+        </ion-label>
+        <small ion-note item-end class="text-muted">{{product.suppliers_admin ? product.suppliers_admin.cus_short_name :
+          '暂无供应商'}}
+        </small>
+        <ion-radio [value]="product.id"></ion-radio>
+      </ion-item>
+    </div>
+
+    <ng-template #item>
+      <ion-item *ngFor="let item of list" (tap)="handleCheck(item.id)">
+        <ion-thumbnail item-start>
+          <img [src]="item.img | pictureHost">
+        </ion-thumbnail>
+        <h2>产品名：{{item.pro_name || '暂无'}}</h2>
+        <p>单价：{{item.pro_price || '暂无'}}</p>
+        <p>供应商：{{item.suppliers_admin ? item.suppliers_admin.cus_short_name : '暂无'}}</p>
+      </ion-item>
+    </ng-template>
+    <p [hidden]="!hasMore && list.length === 0" class="scroll-end">已加载全部</p>
+    <ion-item text-center [hidden]="list.length !== 0">
+      <button clear ion-button (tap)="handleAdd()">暂无产品,添加一个?</button>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="10%" [enabled]="hasMore">
+    <ion-infinite-scroll-content loadingSpinner="bubbles"
+                                 loadingText="正在加载..."
+    ></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

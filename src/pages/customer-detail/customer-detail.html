@@ -1,0 +1,55 @@
+<!--
+  Generated template for the CustomerDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>客户信息</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="editCustomer()">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card class="detail-card">
+    <div class="show-card" [hidden]="!currCustomer.cus_photo">
+      <img [src]="currCustomer.cus_photo | pictureHost:true" picture-download/>
+    </div>
+
+    <div [hidden]="currCustomer.cus_photo">
+      <h1 class="text-muted" style="margin-top: 40px;">暂无名片</h1>
+      <button ion-button clear (click)="editCustomer()">点击编辑</button>
+    </div>
+  </ion-card>
+
+  <ion-list inset class="detail-list">
+      <ion-item>
+        客户类型
+        <ion-note item-end>{{currCustomer.cus_status}}</ion-note>
+      </ion-item>
+      <ion-item>
+        简称
+        <ion-note item-end>{{currCustomer.cus_short_name}}</ion-note>
+      </ion-item>
+      <ion-item>
+        公司
+        <ion-note item-end>{{currCustomer.cus_full_name}}</ion-note>
+      </ion-item>
+      <ion-item>
+        电话
+        <ion-note item-end>{{currCustomer.link_mans[0] && currCustomer.link_mans[0].cusl_tel}}</ion-note>
+      </ion-item>
+      <ion-item>
+        国家
+        <ion-note item-end>{{currCustomer.cus_country}}</ion-note>
+      </ion-item>
+  </ion-list>
+</ion-content>

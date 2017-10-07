@@ -1,0 +1,69 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>查询</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-searchbar [(ngModel)]="searchKey"
+                   placeholder="产品 / 商铺 / 客户"
+                   (ionInput)="handleSearch($event)"
+                   #mainSearch
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item-group [hidden]="searchBox.Product.length == 0">
+      <ion-item-divider sticky color="light">
+        <ion-label>我的产品</ion-label>
+      </ion-item-divider>
+      <ion-item *ngFor="let product of searchBox.Product" [navPush]="'ProductDetailPage'"
+                [navParams]="{id: product.id}">
+        <ion-thumbnail item-start>
+          <img [src]="product.img | pictureHost">
+        </ion-thumbnail>
+        <h2>{{product.pro_name}}</h2>
+        <p>{{product.pro_price}}</p>
+        <p>{{product.suppliers_admin ? product.suppliers_admin.cus_short_name : '暂无供应商'}}</p>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group [hidden]="searchBox.Suppliers_Admin.length == 0">
+      <ion-item-divider sticky color="light">
+        <ion-label>我的商铺</ion-label>
+      </ion-item-divider>
+      <ion-item *ngFor="let store of searchBox.Suppliers_Admin" [navPush]="'StoreDetailPage'" [navParams]="{id: store.cus_id}">
+        <ion-thumbnail item-start>
+          <img [src]="store.cus_picpath | pictureHost">
+        </ion-thumbnail>
+        <h2>{{store.cus_short_name}}</h2>
+        <p>{{store.link_mans[0] && store.link_mans[0].link_phone}}</p>
+        <p>{{store.cus_addr}}</p>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group [hidden]="searchBox.Customer.length == 0">
+      <ion-item-divider sticky color="light">
+        <ion-label>我的客户</ion-label>
+      </ion-item-divider>
+      <button ion-item *ngFor="let cus of searchBox.Customer" [navPush]="'CustomerDetailPage'" [navParams]="{id: cus.cus_id}">
+        {{cus.cus_short_name}}
+        <span ion-note item-end class="text-sm">{{cus.link_mans[0] && cus.link_mans[0].cusl_tel}}</span>
+      </button>
+    </ion-item-group>
+
+  </ion-list>
+  <p class="text-muted" text-center
+     [hidden]="searchBox.Customer.length !== 0 || searchBox.Suppliers_Admin.length !==0 || searchBox.Product.length !== 0">
+    {{hasSearch ? '未查询到相关记录。' : '输入你想找的'}}
+  </p>
+
+</ion-content>

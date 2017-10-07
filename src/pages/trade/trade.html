@@ -1,0 +1,36 @@
+<!--
+  Generated template for the TradePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>业务</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <!-- 查询 -->
+  <span [navPush]="'SearchPage'" class="mainSearch"><ion-icon name="search"></ion-icon>产品 / 商铺 / 客户</span>
+  <ion-list class="m-t-xl">
+    <button ion-item text-center [navPush]="'ProductPage'">
+      我的产品
+    </button>
+    <button ion-item text-center [navPush]="'StorePage'">
+      我的商铺
+    </button>
+    <button ion-item text-center [navPush]="'CustomerPage'">
+      我的客户
+    </button>
+    <button ion-item text-center [navPush]="'OrderCustomerPage'">
+      订购单
+    </button>
+    <button ion-item text-center [navPush]="'AroundCustomerPage'">
+      意向单
+    </button>
+  </ion-list>
+  <button ion-button color="info" block [navPush]="'CustomerPage'" [navParams]="{isCheck: true}">
+    逛市场
+  </button>
+</ion-content>
+

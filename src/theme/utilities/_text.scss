@@ -1,0 +1,68 @@
+.text-white {
+  color: #fff !important;
+}
+
+/* 文字 */
+.text-3em {
+  font-size: 3em;
+}
+
+.text-4em {
+  font-size: 4em;
+}
+
+.text-xl {
+  font-size: 2em;
+}
+
+.text-lg {
+  font-size: 1.5em
+}
+
+.text-md {
+  font-size: 1.2em
+}
+
+.text-sm {
+  font-size: 0.9em;
+}
+
+.text-xs {
+  font-size: 0.8em;
+}
+
+.text-ellipsis {
+  display: block;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-uc {
+  text-transform: uppercase;
+}
+
+.text-lc {
+  text-transform: lowercase;
+}
+
+.text-lt {
+  text-decoration: line-through;
+}
+
+.text-ul {
+  text-decoration: underline;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-normal {
+  font-weight: normal;
+}
+
+@each $col, $color in $colors {
+  @include text-emphasis-variant('.text-#{$col}', $color);
+}

@@ -1,0 +1,114 @@
+/* 清除浮动 */
+.clearfix {
+  zoom: 1;
+  &:before {
+    content: "";
+    display: table;
+  }
+  &:after {
+    font-size: 0;
+
+    display: block;
+    visibility: hidden;
+    clear: both;
+
+    height: 0;
+
+    content: '';
+  }
+}
+
+/* 定位 */
+.pos-rlt {
+  position: relative;
+}
+
+.pos-stc {
+  position: static;
+}
+
+.pos-abt {
+  position: absolute;
+}
+
+/* 边框 */
+.no-border {
+  border-color: transparent;
+  border-width: 0
+}
+
+.no-radius {
+  border-radius: 0
+}
+
+/* 盒子 */
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline-block !important
+}
+
+.box-shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05)
+}
+
+/* 鼠标 */
+.pointer {
+  cursor: pointer;
+}
+
+/* 垂直对齐 */
+.v-middle {
+  vertical-align: middle !important;
+}
+
+.v-top {
+  vertical-align: top !important;
+}
+
+.v-bottom {
+  vertical-align: bottom !important;
+}
+
+// ionic 自有属性
+// padding             padding: 16px
+// padding-top         padding-top: 16px
+// padding-left        padding-left: 16px
+// padding-right       padding-right: 16px
+// padding-bottom      padding-bottom: 16px
+// padding-vertical    padding: 16px 0
+// padding-horizontal  padding: 0 16px
+// no-padding          padding: 0
+
+// margin             margin: 16px
+// margin-top         margin-top: 16px
+// margin-left        margin-left: 16px
+// margin-right       margin-right: 16px
+// margin-bottom      margin-bottom: 16px
+// margin-vertical    margin: 16px 0
+// margin-horizontal  margin: 0 16px
+// no-margin          margin: 0
+
+$parArr: (m: margin, p: padding);
+$sizeArr: (xs, sm, md, lg, xl);
+$dirArr: (t: top, r: right, b: bottom, l: left);
+@each $par, $fullPar in $parArr {
+  .#{$par} {
+    #{$fullPar}: map-get($mp, nor);
+  }
+  @each $size in $sizeArr {
+    .#{$par}-#{$size} {
+      #{$fullPar}: map-get($mp, $size);
+    }
+    @each $dir, $fullDir in $dirArr {
+      .#{$par}-#{$dir}-#{$size} {
+        #{$fullPar}-#{$fullDir}: map-get($mp, $size);
+      }
+      .#{$par}-#{$dir}-none {
+        #{$fullPar}-#{$fullDir}: 0
+      }
+    }
+  }
+}

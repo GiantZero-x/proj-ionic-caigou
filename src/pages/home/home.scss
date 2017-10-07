@@ -1,0 +1,18 @@
+page-home {
+  .homeCamera {
+    position: absolute;
+    right: 10px;
+  }
+  .homeLogo {
+    height: 0;
+    width: 40px;
+    margin: 0 auto;
+  }
+}
+
+.platform-ios {
+  .homeCamera {
+    font-size: 2.2em;
+    top: 22px;
+  }
+}

@@ -1,0 +1,52 @@
+<!--
+  Generated template for the AroundCustomerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>意向单</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar>
+    <ion-searchbar
+      [(ngModel)]="searchKey"
+      (ionInput)="doRefresh()"
+      placeholder="客户名">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown"
+                           pullingText="下拉刷新"
+                           refreshingSpinner="circles"
+                           refreshingText="正在刷新..."
+    ></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item *ngFor="let cus of list" [navPush]="'StoreListPage'" [navParams]="{cusId: cus.cus_id}">
+      <ion-thumbnail item-start>
+        <img  [src]="cus.cus_photo | pictureHost" >
+      </ion-thumbnail>
+      <h2>{{cus.cus_short_name}}</h2>
+      <h3>{{cus.linkMan[0] && cus.linkMan[0].cusl_tel}}</h3>
+      <p class="cooperInfo">
+        <ion-icon name="thumbs-up"></ion-icon>
+        <strong>{{cus.times}}</strong>-
+        <ion-icon name="cart"></ion-icon>
+        <strong>{{cus.suppliers}}</strong>
+        <ion-icon name="basket"></ion-icon>
+        <strong>{{cus.products}}</strong>
+      </p>
+    </ion-item>
+    <ion-item text-center [hidden]="list.length !== 0">
+      <button clear ion-button (click)="start()">还未逛过? 现在开始!</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

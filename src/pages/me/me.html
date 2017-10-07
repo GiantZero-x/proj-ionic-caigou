@@ -1,0 +1,41 @@
+<!--
+  Generated template for the MePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>我的</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card class="m-b-xl">
+    <img [src]="'' | pictureHost:true:true" class="meAvatar">
+    <h2 text-center>{{user.u_truename}}</h2>
+    <p text-center>{{user.u_dept}}</p>
+    <p text-center>{{user.u_center}}</p>
+  </ion-card>
+
+  <ion-list class="m-b-xl">
+    <button ion-item [navPush]="'MeDetailPage'" [navParams]="user">
+      <ion-icon name="information-circle" item-start class="text-muted"></ion-icon>
+      个人信息
+    </button>
+    <ion-item>
+      <ion-icon name="logo-android" ios="logo-apple" item-start class="text-muted"></ion-icon>
+      版本信息
+      <ion-note item-end>
+        {{version}}
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button color="danger" block round (tap)="logOut()">退出</button>
+
+</ion-content>

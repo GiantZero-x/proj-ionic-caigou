@@ -1,0 +1,60 @@
+<!--
+  Generated template for the StoreDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>商铺信息</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="editStore()">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card class="detail-card">
+    <div class="show-card" [hidden]="!currStore.cus_picpath">
+      <img [src]="currStore.cus_picpath | pictureHost:true" picture-download/>
+    </div>
+    <div [hidden]="currStore.cus_picpath">
+      <h1 class="text-muted" style="margin-top: 40px;">暂无名片</h1>
+      <button ion-button clear (click)="editStore()">点击编辑</button>
+    </div>
+  </ion-card>
+
+  <ion-list inset class="detail-list">
+    <ion-item>
+      姓名
+      <ion-note item-end>{{currStore.link_mans[0] ? currStore.link_mans[0].link_name : currStore.cus_boss}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      电话
+      <ion-note item-end>{{currStore.link_mans[0] && currStore.link_mans[0].link_phone}}</ion-note>
+    </ion-item>
+    <ion-item>
+      邮箱
+      <ion-note item-end>{{currStore.link_mans[0] && currStore.link_mans[0].link_email}}</ion-note>
+    </ion-item>
+    <ion-item>
+      商铺名
+      <ion-note item-end>{{currStore.cus_short_name}}</ion-note>
+    </ion-item>
+    <ion-item>
+      职位
+      <ion-note item-end>{{currStore.link_mans[0] && currStore.link_mans[0].link_position}}</ion-note>
+    </ion-item>
+    <ion-item>
+      商铺地址
+      <ion-note item-end>{{currStore.cus_addr}}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

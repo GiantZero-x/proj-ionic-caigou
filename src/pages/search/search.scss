@@ -1,0 +1,14 @@
+page-search {
+  .list-header-md {
+    margin-bottom: 0;
+    border-bottom: 1px dashed color($colors, info);
+    font-size: 1.2em;
+    color: color($colors, info)
+  }
+  .item-md ion-thumbnail img {
+    width: 120px;
+  }
+  .item-md p {
+    white-space: normal;
+  }
+}

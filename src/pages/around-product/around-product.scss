@@ -1,0 +1,17 @@
+page-around-product {
+  ion-item:not(:first-child){
+    ion-label {
+      width: 80px;
+      text-align: justify;
+      text-align-last: justify;
+    }
+  }
+  .product-img{
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+
+

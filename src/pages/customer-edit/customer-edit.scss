@@ -1,0 +1,11 @@
+page-customer-edit {
+  ion-item:not(:first-child) {
+    .item-inner {
+      ion-label {
+        width: 64px;
+        text-align: justify;
+        text-align-last: justify;
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<!--
+  Generated template for the MeDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>个人信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list inset class="detail-list">
+
+    <ion-item>
+      <ion-label>姓名</ion-label>
+      <ion-note item-end>{{user.u_truename}}</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>企业QQ</ion-label>
+      <ion-note item-end>{{user.u_chat}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>电话</ion-label>
+      <ion-note item-end>{{user.u_tel}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>短号</ion-label>
+      <ion-note item-end>{{user.u_cornet}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>所在部门</ion-label>
+      <ion-note item-end>{{user.u_dept}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>所在中心</ion-label>
+      <ion-note item-end>{{user.u_center}}</ion-note>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

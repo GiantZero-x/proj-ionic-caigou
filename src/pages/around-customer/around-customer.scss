@@ -1,0 +1,9 @@
+page-around-customer {
+  .cooperInfo {
+    strong {
+      @extend .text-md;
+      @extend .text-danger;
+      @extend .m-r-xs;
+    }
+  }
+}

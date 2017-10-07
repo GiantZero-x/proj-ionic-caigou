@@ -1,0 +1,57 @@
+page-around-cart {
+  .storeInfo {
+    padding: 0;
+    img {
+      height: 100px;
+    }
+    p {
+      font-size: 0.9em;
+      color: color($colors, muted);
+    }
+  }
+
+  .item.item-md .checkbox-md {
+    margin-right: 5px;
+  }
+
+  div.prodListBox {
+
+    p.proInfo {
+      margin: 0 20px;
+      @extend .text-muted;
+      @extend .clearfix;
+      span {
+        line-height: 35px;
+      }
+    }
+    &:not(:last-child) {
+      p.proInfo {
+        border-bottom: 1px dashed color($colors, muted);
+      }
+    }
+  }
+  .cartToolbar {
+    ion-col {
+      padding: 0;
+      text-align: center;
+      &.selectedNum {
+        line-height: 47px;
+      }
+      &.deleteBtn {
+        button {
+          margin-top: 10px;
+        }
+      }
+      &.checkBtn {
+        > ion-item {
+          min-height: 2rem;
+        }
+      }
+    }
+  }
+
+  button {
+    transition-property: box-shadow, background-color, color, opacity !important;
+  }
+
+}

@@ -1,0 +1,112 @@
+<!--
+  Generated template for the ProductEditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button (tap)="dismiss()">取消</button>
+    </ion-buttons>
+
+    <ion-title>
+      {{currId ? '编辑' : '添加'}}产品
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button (tap)="applyEdit(editForm)" strong>保存</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form #editForm="ngForm">
+    <ion-list class="detail-list text-justify-list">
+      <ion-item>
+        商品图片
+        <small necessary>最多可上传8张, 单张大小<=2M, 长按删除</small>
+        <ion-row>
+          <ion-col col-3 col-md-2 col-lg-1 *ngFor="let img of editProduct.img;index as i" class="product-img">
+            <img [src]="img | pictureHost" [picture-slider]="[i, editProduct.img, true]" style="width: 60px; height: 60px">
+          </ion-col>
+          <ion-col col-3 col-md-2 col-lg-1 [hidden]="editProduct.img.length > 7">
+            <button ion-button color="light" (tap)="upload()">
+              <ion-icon name="camera"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-label>产品名</ion-label>
+        <ion-input type="text" name="pro_name" [(ngModel)]="editProduct.pro_name"></ion-input>
+      </ion-item>
+      <button ion-item (tap)="chooseStore()" [hidden]="hideStore">
+        <ion-label>所属商铺</ion-label>
+        <ion-input disabled type="text" name="cus_short_name"
+                   [(ngModel)]="editProduct.suppliers_admin.cus_short_name"
+        ></ion-input>
+      </button>
+
+      <ion-item>
+        <ion-label necessary>单价(元)</ion-label>
+        <ion-input
+          type="number"
+          name="pro_price"
+          placeholder="必填项"
+          [(ngModel)]="editProduct.pro_price"
+          #pro_price="ngModel"
+          required
+          [pattern]="helper.state.VALID.float.rule"
+        ></ion-input>
+      </ion-item>
+      <p [show-err]="[pro_price.errors, submitted, 'float']"></p>
+      <ion-item>
+        <ion-label necessary>装箱数</ion-label>
+        <ion-input
+          type="number"
+          name="pro_box_quantity"
+          [(ngModel)]="editProduct.pro_box_quantity"
+          placeholder="必填项"
+          #pro_box_quantity="ngModel"
+          required
+          [pattern]="helper.state.VALID.integer.rule"
+        ></ion-input>
+      </ion-item>
+      <p [show-err]="[pro_box_quantity.errors, submitted, 'integer']"></p>
+      <ion-item>
+        <ion-label>体积(m³)</ion-label>
+        <ion-input type="number" name="pro_volume" [(ngModel)]="editProduct.pro_volume"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>重量(kg)</ion-label>
+        <ion-input type="text"
+                   name="pro_weight"
+                   [(ngModel)]="editProduct.pro_weight"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label necessary>单位</ion-label>
+        <ion-input
+          type="text"
+          name="pro_unit"
+          [(ngModel)]="editProduct.pro_unit"
+          placeholder="必填项"
+          #pro_unit="ngModel"
+          required
+        ></ion-input>
+      </ion-item>
+      <p [show-err]="[pro_unit.errors, submitted]"></p>
+      <ion-item>
+        <ion-label>件数</ion-label>
+        <ion-input type="number" name="pro_quantity" [(ngModel)]="editProduct.pro_quantity"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>备注</ion-label>
+        <ion-textarea name="pro_detail" [(ngModel)]="editProduct.pro_detail" autosize placeholder="可输入不超过200个字符的产品介绍"></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </form>
+
+</ion-content>

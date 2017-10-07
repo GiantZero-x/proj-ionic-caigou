@@ -1,0 +1,72 @@
+<!--
+  Generated template for the ProductDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>产品信息</ion-title>
+    <ion-buttons end [hidden]="hideEdit">
+      <button ion-button icon-only (tap)="editProduct()">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-list inset class="detail-list">
+    <ion-item>
+      商品图片
+      <ion-slides class="m-t-xs" [autoplay]="currProduct.img.length > 1 ? 2000 : null">
+
+        <ion-slide *ngFor="let img of currProduct.img;index as i" [picture-slider]="[i,currProduct.img]">
+          <img [src]="img | pictureHost:true" picture-download/>
+        </ion-slide>
+
+      </ion-slides>
+    </ion-item>
+    <ion-item>
+      产品名
+      <ion-note item-end>{{currProduct.pro_name}}</ion-note>
+    </ion-item>
+    <ion-item>
+      所属商铺
+      <ion-note item-end>{{currProduct.suppliers_admin && currProduct.suppliers_admin.cus_short_name}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      单价(元)
+      <ion-note item-end>{{currProduct.pro_price}}</ion-note>
+    </ion-item>
+    <ion-item>
+      装箱数
+      <ion-note item-end>{{currProduct.pro_box_quantity}}</ion-note>
+    </ion-item>
+    <ion-item>
+      体积(m³)
+      <ion-note item-end>{{currProduct.pro_volume}}</ion-note>
+    </ion-item>
+    <ion-item>
+      重量(kg)
+      <ion-note item-end>{{currProduct.pro_weight}}</ion-note>
+    </ion-item>
+    <ion-item>
+      单位
+      <ion-note item-end>{{currProduct.pro_unit}}</ion-note>
+    </ion-item>
+    <ion-item>
+      件数
+      <ion-note item-end>{{currProduct.pro_quantity}}</ion-note>
+    </ion-item>
+    <ion-item>
+      备注
+      <ion-note item-end>{{currProduct.pro_detail}}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
