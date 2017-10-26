@@ -69,6 +69,5 @@ $ ionic serve
     $ ionic upload
  2. $ ionic package build android --prod
  3. 登陆云端 https://apps.ionic.io/apps/
-    18167999108@163.com - 123456
  4. Caigoubao -> Package -> DOWNLOAD
 ```
