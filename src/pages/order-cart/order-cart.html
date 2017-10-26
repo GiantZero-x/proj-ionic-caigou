@@ -37,8 +37,7 @@
     <ion-list-header no-margin>
       商品列表
     </ion-list-header>
-    <div class="prodListBox" *ngFor="let prod of currentCart;index as i" [navPush]="'ProductDetailPage'"
-         [navParams]="{ id: prod.id, isEdit:true}">
+    <div class="prodListBox" *ngFor="let prod of currentCart;index as i" [navPush]="'ProductDetailPage'" [navParams]="{ id: prod.id, isEdit:true}">
       <ion-item>
         <ion-label>
           <h2>{{prod.pro_name}}</h2>
@@ -47,10 +46,9 @@
         </ion-label>
         <ion-thumbnail item-start style="width: 80px;">
 
-          <ion-slides [autoplay]="prod.img.length > 1 ? 2000 : null"
-                      [loop]="prod.img.length > 1">
+          <ion-slides [autoplay]="prod.img.length > 1 ? 2000 : null" [loop]="prod.img.length > 1">
             <ion-slide *ngFor="let img of prod.img;index as i">
-              <img [src]="img | pictureHost"/>
+              <img [src]="img | pictureHost" />
             </ion-slide>
           </ion-slides>
 
@@ -61,5 +59,3 @@
   </ion-list>
 
 </ion-content>
-
-

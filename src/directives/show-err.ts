@@ -1,5 +1,5 @@
-import {Directive, ElementRef, Input, OnChanges} from '@angular/core';
-import {Helper} from "../app/helper";
+import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
+import { Helper } from "../app/helper";
 
 /**
  * Generated class for the ShowErrDirective directive.
@@ -17,7 +17,7 @@ export class ShowErrDirective implements OnChanges {
   timer = null;
 
   constructor(private el: ElementRef,
-              private helper: Helper) {
+    private helper: Helper) {
     el.nativeElement.classList.add('errmsg', 'wobble')
   }
 

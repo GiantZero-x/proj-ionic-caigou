@@ -1,90 +1,63 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons start>
-            <button ion-button (tap)="dismiss()">取消</button>
-        </ion-buttons>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button (tap)="dismiss()">取消</button>
+    </ion-buttons>
 
-        <ion-title>
-            {{editStore.cus_id ? '编辑' : '添加'}}商铺
-        </ion-title>
+    <ion-title>
+      {{editStore.cus_id ? '编辑' : '添加'}}商铺
+    </ion-title>
 
-        <ion-buttons end>
-            <button ion-button (tap)="applyEdit(editForm)" strong>保存</button>
-        </ion-buttons>
-    </ion-toolbar>
+    <ion-buttons end>
+      <button ion-button (tap)="applyEdit(editForm)" strong>保存</button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-    <form #editForm="ngForm">
-        <ion-card (tap)="upload()" class="detail-card">
-            <div class="show-card" [hidden]="!editStore.cus_picpath">
-                <img [src]="editStore.cus_picpath | pictureHost:true">
-            </div>
-            <div [hidden]="editStore.cus_picpath">
-                <ion-icon name="camera" class="text-muted text-4em m-t-sm"></ion-icon>
-                <p>上传名片</p>
-            </div>
-        </ion-card>
+  <form #editForm="ngForm">
+    <ion-card (tap)="upload()" class="detail-card">
+      <div class="show-card" [hidden]="!editStore.cus_picpath">
+        <img [src]="editStore.cus_picpath | pictureHost:true">
+      </div>
+      <div [hidden]="editStore.cus_picpath">
+        <ion-icon name="camera" class="text-muted text-4em m-t-sm"></ion-icon>
+        <p>上传名片</p>
+      </div>
+    </ion-card>
 
-        <ion-list class="detail-list text-justify-list">
-            <ion-item>
-                <ion-label>姓名</ion-label>
-                <ion-input type="text"
-                           name="link_name"
-                           #link_name="ngModel"
-                           [(ngModel)]="editStore.link_mans[0].link_name"
-                ></ion-input>
-            </ion-item>
-            <p [show-err]="[link_name.errors, submitted]"></p>
-            <ion-item>
-                <ion-label>电话</ion-label>
-                <ion-input type="tel"
-                           name="link_phone"
-                           #link_phone="ngModel"
-                           [(ngModel)]="editStore.link_mans[0].link_phone"
-                           [pattern]="helper.state.VALID.tel.rule"
-                ></ion-input>
-            </ion-item>
-            <p [show-err]="[link_phone.errors, submitted, 'tel']"></p>
-            <ion-item>
-                <ion-label>邮箱</ion-label>
-                <ion-input type="email"
-                           name="email"
-                           [(ngModel)]="editStore.link_mans[0].link_email"
-                           #link_email="ngModel"
-                           [pattern]="helper.state.VALID.email.rule"
-                ></ion-input>
-            </ion-item>
-            <p [show-err]="[link_email.errors, submitted, 'email']"></p>
-            <ion-item>
-                <ion-label necessary>商铺名</ion-label>
-                <ion-input type="text"
-                           name="cus_short_name"
-                           [(ngModel)]="editStore.cus_short_name"
-                           #cus_short_name="ngModel"
-                           required
-                ></ion-input>
-            </ion-item>
-            <p [show-err]="[cus_short_name.errors, submitted]"></p>
-            <ion-item>
-                <ion-label>职位</ion-label>
-                <ion-input type="text"
-                           name="position"
-                           [(ngModel)]="editStore.link_mans[0].link_position"
-                           #link_position="ngModel"
-                ></ion-input>
-            </ion-item>
-            <p [show-err]="[link_position.errors, submitted]"></p>
-            <ion-item>
-                <ion-label>地址</ion-label>
-                <ion-input type="text"
-                           name="address"
-                           [(ngModel)]="editStore.cus_addr"
-                           #cus_addr="ngModel"
-                ></ion-input>
-            </ion-item>
-            <p [show-err]="[cus_addr.errors, submitted]"></p>
-        </ion-list>
-    </form>
+    <ion-list class="detail-list text-justify-list">
+      <ion-item>
+        <ion-label>姓名</ion-label>
+        <ion-input type="text" name="link_name" #link_name="ngModel" [(ngModel)]="editStore.link_mans[0].link_name"></ion-input>
+      </ion-item>
+      <p [show-err]="[link_name.errors, submitted]"></p>
+      <ion-item>
+        <ion-label>电话</ion-label>
+        <ion-input type="tel" name="link_phone" #link_phone="ngModel" [(ngModel)]="editStore.link_mans[0].link_phone" [pattern]="helper.state.VALID.tel.rule"></ion-input>
+      </ion-item>
+      <p [show-err]="[link_phone.errors, submitted, 'tel']"></p>
+      <ion-item>
+        <ion-label>邮箱</ion-label>
+        <ion-input type="email" name="email" [(ngModel)]="editStore.link_mans[0].link_email" #link_email="ngModel" [pattern]="helper.state.VALID.email.rule"></ion-input>
+      </ion-item>
+      <p [show-err]="[link_email.errors, submitted, 'email']"></p>
+      <ion-item>
+        <ion-label necessary>商铺名</ion-label>
+        <ion-input type="text" name="cus_short_name" [(ngModel)]="editStore.cus_short_name" #cus_short_name="ngModel" required></ion-input>
+      </ion-item>
+      <p [show-err]="[cus_short_name.errors, submitted]"></p>
+      <ion-item>
+        <ion-label>职位</ion-label>
+        <ion-input type="text" name="position" [(ngModel)]="editStore.link_mans[0].link_position" #link_position="ngModel"></ion-input>
+      </ion-item>
+      <p [show-err]="[link_position.errors, submitted]"></p>
+      <ion-item>
+        <ion-label>地址</ion-label>
+        <ion-input type="text" name="address" [(ngModel)]="editStore.cus_addr" #cus_addr="ngModel"></ion-input>
+      </ion-item>
+      <p [show-err]="[cus_addr.errors, submitted]"></p>
+    </ion-list>
+  </form>
 </ion-content>

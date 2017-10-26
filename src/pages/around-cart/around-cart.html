@@ -57,10 +57,9 @@
         <ion-checkbox color="info" [(ngModel)]="prod.checked" (ionChange)="updateCheckedAll()"></ion-checkbox>
         <ion-thumbnail item-start style="width: 80px;">
 
-          <ion-slides [autoplay]="prod.img.length > 1 ? 2000 : null"
-                      [loop]="prod.img.length > 1">
+          <ion-slides [autoplay]="prod.img.length > 1 ? 2000 : null" [loop]="prod.img.length > 1">
             <ion-slide *ngFor="let img of prod.img;index as i">
-              <img [src]="img | pictureHost"/>
+              <img [src]="img | pictureHost" />
             </ion-slide>
           </ion-slides>
 

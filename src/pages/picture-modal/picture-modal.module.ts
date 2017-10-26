@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { PictureModalPage } from './picture-modal';
-import {Shared} from "../../app/shared";
+import { Shared } from "../../app/shared";
 
 @NgModule({
   declarations: [
@@ -15,4 +15,4 @@ import {Shared} from "../../app/shared";
     PictureModalPage
   ]
 })
-export class PictureModalPageModule {}
+export class PictureModalPageModule { }

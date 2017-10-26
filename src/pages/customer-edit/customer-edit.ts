@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
-import {Events, IonicPage, NavController, NavParams, ViewController, ActionSheetController} from 'ionic-angular';
-import {HttpProvider} from "../../providers/http";
-import {Helper} from "../../app/helper";
-import {NgForm} from '@angular/forms';
-import {ToastServiceProvider} from "../../providers/toast-service";
-import {PictureProvider} from "../../providers/picture";
+import { Component } from '@angular/core';
+import { Events, IonicPage, NavController, NavParams, ViewController, ActionSheetController } from 'ionic-angular';
+import { HttpProvider } from "../../providers/http";
+import { Helper } from "../../app/helper";
+import { NgForm } from '@angular/forms';
+import { ToastServiceProvider } from "../../providers/toast-service";
+import { PictureProvider } from "../../providers/picture";
 
 /**
  * Generated class for the CustomerEditPage page.
@@ -40,15 +40,15 @@ export class CustomerEditPage {
   cus_ID: string;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public http: HttpProvider,
-              public helper: Helper,
-              public viewCtrl: ViewController,
-              public events: Events,
-              public toast: ToastServiceProvider,
-              public picService: PictureProvider,
-              public camera: PictureProvider,
-              public actionSheetCtrl: ActionSheetController,) {
+    public navParams: NavParams,
+    public http: HttpProvider,
+    public helper: Helper,
+    public viewCtrl: ViewController,
+    public events: Events,
+    public toast: ToastServiceProvider,
+    public picService: PictureProvider,
+    public camera: PictureProvider,
+    public actionSheetCtrl: ActionSheetController, ) {
     this.cus_ID = navParams.data.id;
     Object.assign(this.editCustomer, navParams.data.scanData)
   }
@@ -64,7 +64,7 @@ export class CustomerEditPage {
   getDetail() {
 
 
-    this.http.get('tradeapp/Customer/detail', {id: this.cus_ID})
+    this.http.get('tradeapp/Customer/detail', { id: this.cus_ID })
       .then(res => {
 
         res.data.link_mans[0] || res.data.link_mans.push({
@@ -80,7 +80,7 @@ export class CustomerEditPage {
   }
 
 
-  dismiss(data ?: any) {
+  dismiss(data?: any) {
 
     if (data) {
       let obj = {
@@ -139,7 +139,7 @@ export class CustomerEditPage {
           text: '相册上传',
           icon: 'albums',
           handler: () => {
-            this.picService.choosePicture({scan: true})
+            this.picService.choosePicture({ scan: true })
               .then(res => res && this.helper.copyObj(true, this.editCustomer, res))
               .catch(err => console.log(err))
           }

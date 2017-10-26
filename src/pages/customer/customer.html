@@ -9,20 +9,14 @@
     </ion-buttons>
   </ion-navbar>
   <ion-toolbar no-border-top>
-    <ion-searchbar [(ngModel)]="searchKey"
-                   (ionInput)="doRefresh()"
-                   #customerSearch
-                   placeholder="姓名/手机号"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchKey" (ionInput)="doRefresh()" #customerSearch placeholder="姓名/手机号"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-refresher (ionRefresh)="doRefresh($event)">
-   <ion-refresher-content pullingIcon="arrow-dropdown"
-                          pullingText="下拉刷新"
-                          refreshingSpinner="bubbles"
-                          refeshingText="正在刷新...">
-   </ion-refresher-content>
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="bubbles" refeshingText="正在刷新...">
+    </ion-refresher-content>
   </ion-refresher>
 
   <ion-list radio-group [(ngModel)]="checkId">
@@ -32,9 +26,8 @@
       </ion-item-divider>
       <ion-item>
         <ion-label style="overflow-x: auto;margin-bottom: 0;padding-bottom: 17px;">
-          <button *ngFor="let cus of secList" class="m-r-sm" ion-button
-                  [color]="checkId === cus.cus_id ? 'primary': 'light'" small
-                  (tap)="isCheck ? (checkId = cus.cus_id) : handleCheck(cus.cus_id)">
+          <button *ngFor="let cus of secList" class="m-r-sm" ion-button [color]="checkId === cus.cus_id ? 'primary': 'light'" small
+            (tap)="isCheck ? (checkId = cus.cus_id) : handleCheck(cus.cus_id)">
             {{cus.cus_short_name}}
           </button>
         </ion-label>

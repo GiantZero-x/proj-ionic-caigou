@@ -1,6 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams, ModalController, Events, Content} from 'ionic-angular';
-import {HttpProvider} from "../../providers/http";
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController, Events, Content } from 'ionic-angular';
+import { HttpProvider } from "../../providers/http";
 
 /**
  * Generated class for the AroundCustomerPage page.
@@ -26,10 +26,10 @@ export class OrderCustomerPage {
 
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public events: Events,
-              public modalCtrl: ModalController,
-              public http: HttpProvider,) {
+    public navParams: NavParams,
+    public events: Events,
+    public modalCtrl: ModalController,
+    public http: HttpProvider, ) {
   }
 
   /**
@@ -41,12 +41,12 @@ export class OrderCustomerPage {
         page: this.page,
         searchKey: this.searchKey.trim()
       })
-          .then(res => {
-            this.list = isNew ? res.data.data : this.list.concat(res.data.data);
-            // 没有更多则关闭懒加载
-            this.hasMore = res.data.hasmore;
-            resolve();
-          })
+        .then(res => {
+          this.list = isNew ? res.data.data : this.list.concat(res.data.data);
+          // 没有更多则关闭懒加载
+          this.hasMore = res.data.hasmore;
+          resolve();
+        })
         .catch(e => reject(e))
     })
   }
@@ -95,7 +95,7 @@ export class OrderCustomerPage {
    */
   start() {
     this.navCtrl.popToRoot().then(() => {
-      this.navCtrl.push('CustomerPage', {isCheck: true})
+      this.navCtrl.push('CustomerPage', { isCheck: true })
     })
   }
 

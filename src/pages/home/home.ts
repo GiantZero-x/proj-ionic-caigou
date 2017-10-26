@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {NavController, ActionSheetController, AlertController, ModalController} from 'ionic-angular';
-import {HttpProvider} from "../../providers/http";
-import {PictureProvider} from "../../providers/picture";
+import { Component } from '@angular/core';
+import { NavController, ActionSheetController, AlertController, ModalController } from 'ionic-angular';
+import { HttpProvider } from "../../providers/http";
+import { PictureProvider } from "../../providers/picture";
 
 @Component({
   selector: 'page-home',
@@ -22,11 +22,11 @@ export class HomePage {
   };
 
   constructor(public navCtrl: NavController,
-              public actionSheetCtrl: ActionSheetController,
-              public alertCtrl: AlertController,
-              public modalCtrl: ModalController,
-              public picture: PictureProvider,
-              public http: HttpProvider) {
+    public actionSheetCtrl: ActionSheetController,
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
+    public picture: PictureProvider,
+    public http: HttpProvider) {
 
   }
 
@@ -103,7 +103,7 @@ export class HomePage {
    * @param type
    */
   handleAdd(data: any, type: string) {
-    let modal = this.modalCtrl.create(type + 'EditPage', {scanData: data});
+    let modal = this.modalCtrl.create(type + 'EditPage', { scanData: data });
     modal.present();
   }
 }

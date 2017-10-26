@@ -7,7 +7,8 @@
 </ion-header>
 
 <ion-content padding>
-  <span [navPush]="'SearchPage'" class="mainSearch"><ion-icon name="search"></ion-icon>产品 / 商铺 / 客户</span>
+  <span [navPush]="'SearchPage'" class="mainSearch">
+    <ion-icon name="search"></ion-icon>产品 / 商铺 / 客户</span>
   <div class="homeLogo">
     <img src="assets/icon/logo.png">
   </div>
@@ -16,10 +17,12 @@
     <ion-card-content style="border-bottom: 1px solid #ccc;">
       <ion-grid>
         <ion-row>
-          <ion-col col-6 class="text-sm">已接待客户 <strong
-            class="text-success text-lg">{{homeData.week.customers}}</strong></ion-col>
-          <ion-col col-6 class="text-sm">已采购商品 <strong
-            class="text-success text-lg">{{homeData.week.products}}</strong></ion-col>
+          <ion-col col-6 class="text-sm">已接待客户
+            <strong class="text-success text-lg">{{homeData.week.customers}}</strong>
+          </ion-col>
+          <ion-col col-6 class="text-sm">已采购商品
+            <strong class="text-success text-lg">{{homeData.week.products}}</strong>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-content>
@@ -27,10 +30,12 @@
     <ion-card-content>
       <ion-grid>
         <ion-row>
-          <ion-col col-6 class="text-sm">已接待客户 <strong
-            class="text-success text-lg">{{homeData.month.customers}}</strong></ion-col>
-          <ion-col col-6 class="text-sm">已采购商品 <strong
-            class="text-success text-lg">{{homeData.month.products}}</strong></ion-col>
+          <ion-col col-6 class="text-sm">已接待客户
+            <strong class="text-success text-lg">{{homeData.month.customers}}</strong>
+          </ion-col>
+          <ion-col col-6 class="text-sm">已采购商品
+            <strong class="text-success text-lg">{{homeData.month.products}}</strong>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-content>

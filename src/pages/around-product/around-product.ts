@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   IonicPage,
   NavController,
@@ -7,12 +7,12 @@ import {
   ActionSheetController,
   ModalController
 } from 'ionic-angular';
-import {NgForm} from '@angular/forms';
-import {Keyboard} from '@ionic-native/keyboard';
-import {ToastServiceProvider} from "../../providers/toast-service";
-import {HttpProvider} from "../../providers/http";
-import {Helper} from "../../app/helper";
-import {PictureProvider} from "../../providers/picture";
+import { NgForm } from '@angular/forms';
+import { Keyboard } from '@ionic-native/keyboard';
+import { ToastServiceProvider } from "../../providers/toast-service";
+import { HttpProvider } from "../../providers/http";
+import { Helper } from "../../app/helper";
+import { PictureProvider } from "../../providers/picture";
 
 /**
  * Generated class for the AroundProductPage page.
@@ -57,15 +57,15 @@ export class AroundProductPage {
 
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public alertCtrl: AlertController,
-              public toastCtrl: ToastServiceProvider,
-              public actionSheetCtrl: ActionSheetController,
-              public modalCtrl: ModalController,
-              public http: HttpProvider,
-              public helper: Helper,
-              public picService: PictureProvider,
-              public keyboard: Keyboard,) {
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public toastCtrl: ToastServiceProvider,
+    public actionSheetCtrl: ActionSheetController,
+    public modalCtrl: ModalController,
+    public http: HttpProvider,
+    public helper: Helper,
+    public picService: PictureProvider,
+    public keyboard: Keyboard, ) {
     // 客户id赋值
     this.cusId = navParams.data.cusId;
 
@@ -124,7 +124,7 @@ export class AroundProductPage {
               navTransition,
               this.navCtrl.popToRoot()
             ]).then(() => {
-              this.navCtrl.push('StoreListPage', {cusId: this.cusId})
+              this.navCtrl.push('StoreListPage', { cusId: this.cusId })
             });
           }
         },
@@ -210,7 +210,7 @@ export class AroundProductPage {
    * 查看购物车
    */
   goToCart() {
-    this.navCtrl.push('AroundCartPage', {store: this.stoInfo, cusId: this.cusId});
+    this.navCtrl.push('AroundCartPage', { store: this.stoInfo, cusId: this.cusId });
   }
 
   /**
@@ -224,7 +224,7 @@ export class AroundProductPage {
           text: '产品列表',
           icon: 'list',
           handler: () => {
-            let modal = this.modalCtrl.create('ProductPage', {isCheck: true, hideStore: this.stoInfo.cus_id});
+            let modal = this.modalCtrl.create('ProductPage', { isCheck: true, hideStore: this.stoInfo.cus_id });
             modal.present();
 
             modal.onDidDismiss(data => {
@@ -270,7 +270,7 @@ export class AroundProductPage {
    * 修改商铺
    */
   changeStore() {
-    let modal = this.modalCtrl.create('StorePage', {isCheck: true, checkId: this.stoInfo.cus_id});
+    let modal = this.modalCtrl.create('StorePage', { isCheck: true, checkId: this.stoInfo.cus_id });
     modal.present();
 
     modal.onDidDismiss(data => {

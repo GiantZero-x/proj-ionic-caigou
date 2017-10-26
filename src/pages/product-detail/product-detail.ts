@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ModalController, Events} from 'ionic-angular';
-import {HttpProvider} from "../../providers/http";
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController, Events } from 'ionic-angular';
+import { HttpProvider } from "../../providers/http";
 
 /**
  * Generated class for the ProductDetailPage page.
@@ -23,10 +23,10 @@ export class ProductDetailPage {
   currId: string;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public modalCtrl: ModalController,
-              public http: HttpProvider,
-              public events: Events) {
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    public http: HttpProvider,
+    public events: Events) {
     this.currId = navParams.data.id;
     this.hideEdit = navParams.data.isEdit;
   }
@@ -35,14 +35,14 @@ export class ProductDetailPage {
    * 进入前
    */
   ionViewWillEnter() {
-  this.getDetail();
-}
+    this.getDetail();
+  }
 
   /**
    * 获取详情
    */
   getDetail() {
-    this.http.get('tradeapp/Product/detail', {id: this.currId})
+    this.http.get('tradeapp/Product/detail', { id: this.currId })
       .then(res => {
         res.data.img = res.data.img ? res.data.img.split('|') : [];
         this.currProduct = res.data;
@@ -52,16 +52,15 @@ export class ProductDetailPage {
 
 
 
-  editProduct()
-    {
-      let modal = this.modalCtrl.create('ProductEditPage', {id: this.currId});
-      modal.present();
+  editProduct() {
+    let modal = this.modalCtrl.create('ProductEditPage', { id: this.currId });
+    modal.present();
 
-      modal.onWillDismiss(hasUpdate => {
-        if (hasUpdate) {
-          this.getDetail();
-          this.events.publish('updateList:Product')
-        }
-      });
+    modal.onWillDismiss(hasUpdate => {
+      if (hasUpdate) {
+        this.getDetail();
+        this.events.publish('updateList:Product')
+      }
+    });
   }
 }

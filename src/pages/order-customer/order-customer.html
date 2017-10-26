@@ -5,10 +5,7 @@
   </ion-navbar>
 
   <ion-toolbar>
-    <ion-searchbar
-        [(ngModel)]="searchKey"
-        (ionInput)="doRefresh()"
-        placeholder="客户名">
+    <ion-searchbar [(ngModel)]="searchKey" (ionInput)="doRefresh()" placeholder="客户名">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
@@ -16,11 +13,7 @@
 
 <ion-content>
   <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown"
-                           pullingText="下拉刷新"
-                           refreshingSpinner="circles"
-                           refreshingText="正在刷新..."
-    ></ion-refresher-content>
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="正在刷新..."></ion-refresher-content>
   </ion-refresher>
 
   <ion-list>
@@ -46,4 +39,3 @@
     </ion-item>
   </ion-list>
 </ion-content>
-

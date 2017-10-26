@@ -1,6 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
-import {Content, Events, IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
-import {HttpProvider} from "../../providers/http";
+import { Component, ViewChild } from '@angular/core';
+import { Content, Events, IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
+import { HttpProvider } from "../../providers/http";
 
 /**
  * Generated class for the CustomerPage page.
@@ -26,10 +26,10 @@ export class CustomerPage {
   public checkId: string;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public modalCtrl: ModalController,
-              public events: Events,
-              public http: HttpProvider) {
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    public events: Events,
+    public http: HttpProvider) {
 
     this.isCheck = Boolean(navParams.data.isCheck);
     this.events.subscribe('updateList:Customer', () => this.getList(true));
@@ -45,7 +45,7 @@ export class CustomerPage {
 
     return new Promise((resolve, reject) => {
       Promise.all([
-        this.http.get('tradeapp/customer/index', {page: this.page, searchKey: this.searchKey.trim()}),
+        this.http.get('tradeapp/customer/index', { page: this.page, searchKey: this.searchKey.trim() }),
         this.http.get('tradeapp/customer/oldCustomers', false)
       ])
         .then(resArr => {
@@ -98,7 +98,7 @@ export class CustomerPage {
 
 
   public handleCheck(id) {
-    this.isCheck || this.navCtrl.push('CustomerDetailPage', {id: id})
+    this.isCheck || this.navCtrl.push('CustomerDetailPage', { id: id })
   }
 
   /**
@@ -121,7 +121,7 @@ export class CustomerPage {
 
   /*选中提交*/
   public submitCheck() {
-    this.navCtrl.push('AroundProductPage', {cusId: this.checkId});
+    this.navCtrl.push('AroundProductPage', { cusId: this.checkId });
   }
 
 }

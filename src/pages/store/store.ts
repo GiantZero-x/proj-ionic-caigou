@@ -1,6 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams, Content, Events, ModalController, ViewController} from 'ionic-angular'
-import {HttpProvider} from "../../providers/http";
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content, Events, ModalController, ViewController } from 'ionic-angular'
+import { HttpProvider } from "../../providers/http";
 
 /**
  * Generated class for the StorePage page.
@@ -26,11 +26,11 @@ export class StorePage {
   public checkId: string;      //  选中id
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public events: Events,
-              public modalCtrl: ModalController,
-              public http: HttpProvider,
-              public viewCtrl: ViewController,) {
+    public navParams: NavParams,
+    public events: Events,
+    public modalCtrl: ModalController,
+    public http: HttpProvider,
+    public viewCtrl: ViewController, ) {
     // 判断查看列表类型
     this.isCheck = Boolean(navParams.data.isCheck);
     this.checkId = navParams.data.checkId;
@@ -114,7 +114,7 @@ export class StorePage {
    * @param id  {String}  产品id
    */
   public handleCheck(id) {
-    this.isCheck || this.navCtrl.push('StoreDetailPage', {id: id})
+    this.isCheck || this.navCtrl.push('StoreDetailPage', { id: id })
   }
 
   /**

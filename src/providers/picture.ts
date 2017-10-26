@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Camera} from '@ionic-native/camera';
-import {ImagePicker} from '@ionic-native/image-picker';
-import {HttpProvider} from "./http";
+import { Injectable } from '@angular/core';
+import { Camera } from '@ionic-native/camera';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { HttpProvider } from "./http";
 // import {imageData} from "./mockImage"
 
 /*
@@ -23,8 +23,8 @@ export class PictureProvider {
   };
 
   constructor(private camera: Camera,
-              private imagePicker: ImagePicker,
-              private http: HttpProvider) {
+    private imagePicker: ImagePicker,
+    private http: HttpProvider) {
   }
 
   /**

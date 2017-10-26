@@ -2,9 +2,9 @@
  * 输出共享管道, 指令, 组件
  * */
 
-import {Components, Directives, Pipes} from "./app.import";
-import {NgModule} from '@angular/core';
-import {IonicModule} from 'ionic-angular';
+import { Components, Directives, Pipes } from "./app.import";
+import { NgModule } from '@angular/core';
+import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   declarations: [

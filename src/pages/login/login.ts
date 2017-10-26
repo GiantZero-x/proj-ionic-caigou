@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {IonicPage, LoadingController, Events} from 'ionic-angular';
-import {NgForm} from '@angular/forms';
-import {ToastServiceProvider} from "../../providers/toast-service";
-import {Storage} from '@ionic/storage';
-import {HttpProvider} from "../../providers/http";
+import { Component } from '@angular/core';
+import { IonicPage, LoadingController, Events } from 'ionic-angular';
+import { NgForm } from '@angular/forms';
+import { ToastServiceProvider } from "../../providers/toast-service";
+import { Storage } from '@ionic/storage';
+import { HttpProvider } from "../../providers/http";
 
 /**
  * Generated class for the LoginPage page.
@@ -38,10 +38,10 @@ export class LoginPage {
   canLeave: boolean = false;
 
   constructor(public loadingCtrl: LoadingController,
-              public events: Events,
-              public toast: ToastServiceProvider,
-              public storage: Storage,
-              public http: HttpProvider) {
+    public events: Events,
+    public toast: ToastServiceProvider,
+    public storage: Storage,
+    public http: HttpProvider) {
     // 读取历史登录用户名
     this.storage.get('lastLoginName').then(res => this.loginInfo.username = res);
   }
@@ -73,7 +73,7 @@ export class LoginPage {
   login(form?: NgForm) {
     this.submitted++;
     if (form.valid) {
-      let loading = this.loadingCtrl.create({content: "正在登录..."});
+      let loading = this.loadingCtrl.create({ content: "正在登录..." });
       loading.present();
       this.http
         .post('tradeapp/login/login', this.loginInfo)

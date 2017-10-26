@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavParams, ViewController, Events, ActionSheetController, ModalController} from 'ionic-angular';
-import {NgForm} from '@angular/forms';
-import {ToastServiceProvider} from "../../providers/toast-service";
-import {Helper} from "../../app/helper";
-import {HttpProvider} from "../../providers/http";
-import {PictureProvider} from "../../providers/picture";
+import { Component } from '@angular/core';
+import { IonicPage, NavParams, ViewController, Events, ActionSheetController, ModalController } from 'ionic-angular';
+import { NgForm } from '@angular/forms';
+import { ToastServiceProvider } from "../../providers/toast-service";
+import { Helper } from "../../app/helper";
+import { HttpProvider } from "../../providers/http";
+import { PictureProvider } from "../../providers/picture";
 
 /**
  * Generated class for the ProductEditPage page.
@@ -43,14 +43,14 @@ export class ProductEditPage {
   hideStore: any;
 
   constructor(public navParams: NavParams,
-              public viewCtrl: ViewController,
-              public toast: ToastServiceProvider,
-              public events: Events,
-              public helper: Helper,
-              public http: HttpProvider,
-              public actionSheetCtrl: ActionSheetController,
-              public modalCtrl: ModalController,
-              public picService: PictureProvider) {
+    public viewCtrl: ViewController,
+    public toast: ToastServiceProvider,
+    public events: Events,
+    public helper: Helper,
+    public http: HttpProvider,
+    public actionSheetCtrl: ActionSheetController,
+    public modalCtrl: ModalController,
+    public picService: PictureProvider) {
     // 前置页面 - 详情
     this.currId = navParams.data.id;
 
@@ -69,7 +69,7 @@ export class ProductEditPage {
    * 获取详情
    */
   getDetail() {
-    this.http.get('tradeapp/Product/detail', {id: this.currId})
+    this.http.get('tradeapp/Product/detail', { id: this.currId })
       .then(res => {
         res.data.img = res.data.img ? res.data.img.split('|') : [];
         res.data.suppliers_admin || (res.data.suppliers_admin = {
@@ -93,7 +93,7 @@ export class ProductEditPage {
   }
 
   // 取消
-  dismiss(data ?: any) {
+  dismiss(data?: any) {
     if (data) {
       let obj = {
         id: data['id'],
@@ -161,7 +161,7 @@ export class ProductEditPage {
    * 选择商铺
    */
   chooseStore() {
-    let modal = this.modalCtrl.create('StorePage', {isCheck: true, checkId: this.editProduct.suppliers_admin.cus_id});
+    let modal = this.modalCtrl.create('StorePage', { isCheck: true, checkId: this.editProduct.suppliers_admin.cus_id });
     modal.present();
 
     modal.onDidDismiss(data => data && Object.assign(this.editProduct.suppliers_admin, data));

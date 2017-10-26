@@ -1,14 +1,14 @@
-import {Injectable} from '@angular/core';
-import {LoadingController, Events} from 'ionic-angular';
-import {Http, RequestOptions, Headers} from '@angular/http';
-import {HTTP} from '@ionic-native/http';
-import {Helper} from "../app/helper";
-import {Storage} from '@ionic/storage';
-import {FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer';
-import {File} from '@ionic-native/file';
-import {FileOpener} from '@ionic-native/file-opener';
+import { Injectable } from '@angular/core';
+import { LoadingController, Events } from 'ionic-angular';
+import { Http, RequestOptions, Headers } from '@angular/http';
+import { HTTP } from '@ionic-native/http';
+import { Helper } from "../app/helper";
+import { Storage } from '@ionic/storage';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
 import 'rxjs/add/operator/toPromise';
-import {ToastServiceProvider} from "./toast-service";
+import { ToastServiceProvider } from "./toast-service";
 
 /*
   Generated class for the HttpProvider provider.
@@ -25,15 +25,15 @@ export class HttpProvider {
   fileTransfer: FileTransferObject = this.transfer.create();
 
   constructor(public http: Http,
-              private ioHttp: HTTP,
-              public loadingCtrl: LoadingController,
-              public file: File,
-              public events: Events,
-              public transfer: FileTransfer,
-              public helper: Helper,
-              public storage: Storage,
-              public fileOpener: FileOpener,
-              public toast: ToastServiceProvider) {
+    private ioHttp: HTTP,
+    public loadingCtrl: LoadingController,
+    public file: File,
+    public events: Events,
+    public transfer: FileTransfer,
+    public helper: Helper,
+    public storage: Storage,
+    public fileOpener: FileOpener,
+    public toast: ToastServiceProvider) {
   }
 
   /**
@@ -44,8 +44,8 @@ export class HttpProvider {
    */
   async get(url: string, parameters: Object = {}) {
     let token = await this.storage.get('userInfo').then(res => res && res.token);
-    let header = new Headers({'Content-Type': 'application/json', token: token});
-    let options = new RequestOptions({params: parameters, headers: header});
+    let header = new Headers({ 'Content-Type': 'application/json', token: token });
+    let options = new RequestOptions({ params: parameters, headers: header });
     return this.http.get(this.API_URL.common + url, options)
       .toPromise()
       .then(res => this.onResponse(res))
@@ -60,8 +60,8 @@ export class HttpProvider {
    */
   async post(url: string, body: Object = {}) {
     let token = await this.storage.get('userInfo').then(res => res && res.token);
-    let header = new Headers({'Content-Type': 'application/json', token: token});
-    let options = new RequestOptions({headers: header});
+    let header = new Headers({ 'Content-Type': 'application/json', token: token });
+    let options = new RequestOptions({ headers: header });
     return this.http.post(this.API_URL.common + url, body, options)
       .toPromise()
       .then(res => this.onResponse(res))
@@ -75,7 +75,7 @@ export class HttpProvider {
   uploadBase64(imgData) {
     let loading = this.loadingCtrl.create();
     loading.present();
-    return this.post(this.API_URL.base64, {base64: imgData})
+    return this.post(this.API_URL.base64, { base64: imgData })
       .then(res => {
         loading.dismiss();
         return res
@@ -98,7 +98,7 @@ export class HttpProvider {
       fileKey: 'fileList',
       fileName: fileURL.split('/').reverse()[0],
       mimeType: "text/plain",
-      headers: {token: token}
+      headers: { token: token }
     };
 
     return this.fileTransfer.upload(fileURL, this.API_URL.file, options)
@@ -120,14 +120,14 @@ export class HttpProvider {
     let loading = this.loadingCtrl.create();
     loading.present();
 
-    return this.post(this.API_URL.card, {data: imgData})
+    return this.post(this.API_URL.card, { data: imgData })
       .then(res => {
 
         let data = JSON.parse(res['card']['outputs'][0]['outputValue']['dataValue']);
 
         loading.dismiss();
 
-        if(!res.card){
+        if (!res.card) {
           this.toast.open('无法识别');
         }
         /* 组装数据 */
@@ -249,7 +249,7 @@ export class HttpProvider {
         })
       } else {
         const body = JSON.parse(err._body);
-        this.toast.open(body.msg, {time: 3})
+        this.toast.open(body.msg, { time: 3 })
       }
     } else {
       this.toast.open('网络错误')

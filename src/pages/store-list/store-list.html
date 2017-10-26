@@ -10,10 +10,7 @@
     <ion-title>已逛商铺</ion-title>
   </ion-navbar>
   <ion-toolbar no-border-top>
-    <ion-searchbar
-            [(ngModel)]="searchKey"
-            (ionInput)="doRefresh()"
-            placeholder="商铺名">
+    <ion-searchbar [(ngModel)]="searchKey" (ionInput)="doRefresh()" placeholder="商铺名">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
@@ -21,15 +18,10 @@
 
 <ion-content>
   <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown"
-                           pullingText="下拉刷新"
-                           refreshingSpinner="circles"
-                           refreshingText="正在刷新..."
-    ></ion-refresher-content>
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="正在刷新..."></ion-refresher-content>
   </ion-refresher>
-  <ion-card *ngFor="let store of list" [navPush]="'AroundCartPage'"
-            [navParams]="{store:store, cusId:cusId}">
-    <img [src]="store.cus_picpath | pictureHost:true" class="store_list_img"/>
+  <ion-card *ngFor="let store of list" [navPush]="'AroundCartPage'" [navParams]="{store:store, cusId:cusId}">
+    <img [src]="store.cus_picpath | pictureHost:true" class="store_list_img" />
     <ion-card-content class="p-b-none p-t-none">
       <ion-card-title class="text-md">
         <strong>{{store.cus_short_name}}</strong>
@@ -41,13 +33,15 @@
       <ion-col>
         <button color="dark" ion-button icon-left clear small>
           <ion-icon name="thumbs-up"></ion-icon>
-          <div>已合作 <strong class="text-danger text-lg">{{store.times}}</strong> 次</div>
+          <div>已合作
+            <strong class="text-danger text-lg">{{store.times}}</strong> 次</div>
         </button>
       </ion-col>
       <ion-col>
         <button color="dark" ion-button icon-left clear small>
           <ion-icon name="basket"></ion-icon>
-          <div>相中 <strong class="text-danger text-lg">{{store.productNum}}</strong> 个商品</div>
+          <div>相中
+            <strong class="text-danger text-lg">{{store.productNum}}</strong> 个商品</div>
         </button>
       </ion-col>
     </ion-row>
@@ -56,8 +50,6 @@
     <button clear ion-button (click)="start(navParams.data)">还没逛过,现在开始!</button>
   </ion-item>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="10%" [enabled]="hasMore">
-    <ion-infinite-scroll-content loadingSpinner="bubbles"
-                                 loadingText="正在加载..."
-    ></ion-infinite-scroll-content>
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载..."></ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

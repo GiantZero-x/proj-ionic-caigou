@@ -26,17 +26,18 @@
     <ion-list class="detail-list text-justify-list">
       <ion-item>
         商品图片
-        <small necessary>最多可上传8张, 单张大小<=2M, 长按删除</small>
-        <ion-row>
-          <ion-col col-3 col-md-2 col-lg-1 *ngFor="let img of editProduct.img;index as i" class="product-img">
-            <img [src]="img | pictureHost" [picture-slider]="[i, editProduct.img, true]" style="width: 60px; height: 60px">
-          </ion-col>
-          <ion-col col-3 col-md-2 col-lg-1 [hidden]="editProduct.img.length > 7">
-            <button ion-button color="light" (tap)="upload()">
-              <ion-icon name="camera"></ion-icon>
-            </button>
-          </ion-col>
-        </ion-row>
+        <small necessary>最多可上传8张, 单张大小
+          <=2M, 长按删除</small>
+            <ion-row>
+              <ion-col col-3 col-md-2 col-lg-1 *ngFor="let img of editProduct.img;index as i" class="product-img">
+                <img [src]="img | pictureHost" [picture-slider]="[i, editProduct.img, true]" style="width: 60px; height: 60px">
+              </ion-col>
+              <ion-col col-3 col-md-2 col-lg-1 [hidden]="editProduct.img.length > 7">
+                <button ion-button color="light" (tap)="upload()">
+                  <ion-icon name="camera"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
       </ion-item>
       <ion-item>
         <ion-label>产品名</ion-label>
@@ -44,35 +45,19 @@
       </ion-item>
       <button ion-item (tap)="chooseStore()" [hidden]="hideStore">
         <ion-label>所属商铺</ion-label>
-        <ion-input disabled type="text" name="cus_short_name"
-                   [(ngModel)]="editProduct.suppliers_admin.cus_short_name"
-        ></ion-input>
+        <ion-input disabled type="text" name="cus_short_name" [(ngModel)]="editProduct.suppliers_admin.cus_short_name"></ion-input>
       </button>
 
       <ion-item>
         <ion-label necessary>单价(元)</ion-label>
-        <ion-input
-          type="number"
-          name="pro_price"
-          placeholder="必填项"
-          [(ngModel)]="editProduct.pro_price"
-          #pro_price="ngModel"
-          required
-          [pattern]="helper.state.VALID.float.rule"
-        ></ion-input>
+        <ion-input type="number" name="pro_price" placeholder="必填项" [(ngModel)]="editProduct.pro_price" #pro_price="ngModel" required
+          [pattern]="helper.state.VALID.float.rule"></ion-input>
       </ion-item>
       <p [show-err]="[pro_price.errors, submitted, 'float']"></p>
       <ion-item>
         <ion-label necessary>装箱数</ion-label>
-        <ion-input
-          type="number"
-          name="pro_box_quantity"
-          [(ngModel)]="editProduct.pro_box_quantity"
-          placeholder="必填项"
-          #pro_box_quantity="ngModel"
-          required
-          [pattern]="helper.state.VALID.integer.rule"
-        ></ion-input>
+        <ion-input type="number" name="pro_box_quantity" [(ngModel)]="editProduct.pro_box_quantity" placeholder="必填项" #pro_box_quantity="ngModel"
+          required [pattern]="helper.state.VALID.integer.rule"></ion-input>
       </ion-item>
       <p [show-err]="[pro_box_quantity.errors, submitted, 'integer']"></p>
       <ion-item>
@@ -81,21 +66,11 @@
       </ion-item>
       <ion-item>
         <ion-label>重量(kg)</ion-label>
-        <ion-input type="text"
-                   name="pro_weight"
-                   [(ngModel)]="editProduct.pro_weight"
-        ></ion-input>
+        <ion-input type="text" name="pro_weight" [(ngModel)]="editProduct.pro_weight"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label necessary>单位</ion-label>
-        <ion-input
-          type="text"
-          name="pro_unit"
-          [(ngModel)]="editProduct.pro_unit"
-          placeholder="必填项"
-          #pro_unit="ngModel"
-          required
-        ></ion-input>
+        <ion-input type="text" name="pro_unit" [(ngModel)]="editProduct.pro_unit" placeholder="必填项" #pro_unit="ngModel" required></ion-input>
       </ion-item>
       <p [show-err]="[pro_unit.errors, submitted]"></p>
       <ion-item>

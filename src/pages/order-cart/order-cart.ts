@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   IonicPage,
   NavController,
@@ -7,8 +7,8 @@ import {
   AlertController,
   Content
 } from 'ionic-angular';
-import {ToastServiceProvider} from "../../providers/toast-service";
-import {HttpProvider} from "../../providers/http";
+import { ToastServiceProvider } from "../../providers/toast-service";
+import { HttpProvider } from "../../providers/http";
 
 
 /**
@@ -36,13 +36,13 @@ export class OrderCartPage {
   // 客户id
   cusId: string;
 
-  orderId:string;
+  orderId: string;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public alertCtrl: AlertController,
-              public toastCtrl: ToastServiceProvider,
-              public http: HttpProvider) {
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public toastCtrl: ToastServiceProvider,
+    public http: HttpProvider) {
     this.cusId = navParams.data.cusId;
     this.currentStore = navParams.data.store;
     this.orderId = navParams.data.orderId;

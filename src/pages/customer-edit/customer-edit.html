@@ -6,85 +6,64 @@
 -->
 <ion-header>
 
-    <ion-navbar>
-        <ion-buttons start>
-            <button ion-button (click)="dismiss()">取消</button>
-        </ion-buttons>
-        <ion-title>
-            {{currId ? '编辑' : '添加'}}客户
-        </ion-title>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">取消</button>
+    </ion-buttons>
+    <ion-title>
+      {{currId ? '编辑' : '添加'}}客户
+    </ion-title>
 
-        <ion-buttons end>
-            <button ion-button (click)="applyEdit(editForm)" strong>保存</button>
-        </ion-buttons>
-    </ion-navbar>
+    <ion-buttons end>
+      <button ion-button (click)="applyEdit(editForm)" strong>保存</button>
+    </ion-buttons>
+  </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-    <form #editForm="ngForm">
-        <ion-card (click)="upload()" class="detail-card">
-            <div class="show-card" [hidden]="!editCustomer.cus_photo">
-                <img [src]="editCustomer.cus_photo | pictureHost:true">
-            </div>
-            <div [hidden]="editCustomer.cus_photo">
-                <ion-icon name="camera" class="text-muted text-4em m-t-sm"></ion-icon>
-                <p>上传名片</p>
-            </div>
-        </ion-card>
+  <form #editForm="ngForm">
+    <ion-card (click)="upload()" class="detail-card">
+      <div class="show-card" [hidden]="!editCustomer.cus_photo">
+        <img [src]="editCustomer.cus_photo | pictureHost:true">
+      </div>
+      <div [hidden]="editCustomer.cus_photo">
+        <ion-icon name="camera" class="text-muted text-4em m-t-sm"></ion-icon>
+        <p>上传名片</p>
+      </div>
+    </ion-card>
 
-        <ion-list class="detail-list">
-            <ion-item>
-                <ion-label>客户类型</ion-label>
-                <ion-select [(ngModel)]="editCustomer.cus_status"
-                            okText="确定"
-                            cancelText="取消"
-                            interface="popover"
-                            name="cus_status">
-                    <ion-option value="意向">意向客户</ion-option>
-                    <ion-option value="成交">成交客户</ion-option>
-                </ion-select>
-            </ion-item>
+    <ion-list class="detail-list">
+      <ion-item>
+        <ion-label>客户类型</ion-label>
+        <ion-select [(ngModel)]="editCustomer.cus_status" okText="确定" cancelText="取消" interface="popover" name="cus_status">
+          <ion-option value="意向">意向客户</ion-option>
+          <ion-option value="成交">成交客户</ion-option>
+        </ion-select>
+      </ion-item>
 
-            <ion-item>
-                <ion-label necessary>简称</ion-label>
-                <ion-input name="cusl_name"
-                           type="text"
-                           #cus_short_name="ngModel"
-                           [(ngModel)]="editCustomer.cus_short_name"
-                           required>
-                </ion-input>
-            </ion-item>
-            <p [show-err]="[cus_short_name.errors, submitted]"></p>
-            <ion-item>
-                <ion-label>公司</ion-label>
-                <ion-input name="cus_full_name"
-                           type="text"
-                           #cus_full_name="ngModel"
-                           [(ngModel)]="editCustomer.cus_full_name"
-                ></ion-input>
-            </ion-item>
-            <p [show-err]="[cus_full_name.errors, submitted]"></p>
-            <ion-item>
-                <ion-label>电话</ion-label>
-                <ion-input name="cusl_tel"
-                           type="tel"
-                           #cusl_tel="ngModel"
-                           [(ngModel)]="editCustomer.link_mans[0].cusl_tel"
-                           [pattern]="helper.state.VALID.tel.rule"
-                ></ion-input>
-            </ion-item>
-            <p [show-err]="[cusl_tel.errors, submitted, 'tel']"></p>
-            <ion-item>
-                <ion-label>国家</ion-label>
-                <ion-input name="cus_country"
-                           type="text"
-                           #cus_country="ngModel"
-                           [(ngModel)]="editCustomer.cus_country"
-                ></ion-input>
-            </ion-item>
-            <p [show-err]="[cus_country.errors, submitted]"></p>
-        </ion-list>
-    </form>
+      <ion-item>
+        <ion-label necessary>简称</ion-label>
+        <ion-input name="cusl_name" type="text" #cus_short_name="ngModel" [(ngModel)]="editCustomer.cus_short_name" required>
+        </ion-input>
+      </ion-item>
+      <p [show-err]="[cus_short_name.errors, submitted]"></p>
+      <ion-item>
+        <ion-label>公司</ion-label>
+        <ion-input name="cus_full_name" type="text" #cus_full_name="ngModel" [(ngModel)]="editCustomer.cus_full_name"></ion-input>
+      </ion-item>
+      <p [show-err]="[cus_full_name.errors, submitted]"></p>
+      <ion-item>
+        <ion-label>电话</ion-label>
+        <ion-input name="cusl_tel" type="tel" #cusl_tel="ngModel" [(ngModel)]="editCustomer.link_mans[0].cusl_tel" [pattern]="helper.state.VALID.tel.rule"></ion-input>
+      </ion-item>
+      <p [show-err]="[cusl_tel.errors, submitted, 'tel']"></p>
+      <ion-item>
+        <ion-label>国家</ion-label>
+        <ion-input name="cus_country" type="text" #cus_country="ngModel" [(ngModel)]="editCustomer.cus_country"></ion-input>
+      </ion-item>
+      <p [show-err]="[cus_country.errors, submitted]"></p>
+    </ion-list>
+  </form>
 </ion-content>

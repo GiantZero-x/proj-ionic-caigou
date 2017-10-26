@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {Events, IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
-import {HttpProvider} from "../../providers/http";
+import { Component } from '@angular/core';
+import { Events, IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
+import { HttpProvider } from "../../providers/http";
 
 /**
  * Generated class for the CustomerDetailPage page.
@@ -22,10 +22,10 @@ export class CustomerDetailPage {
   cus_ID: string;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public modalCtrl: ModalController,
-              public http: HttpProvider,
-              public events: Events,) {
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    public http: HttpProvider,
+    public events: Events, ) {
 
     this.cus_ID = navParams.data.id;
   }
@@ -39,7 +39,7 @@ export class CustomerDetailPage {
    */
   getDetail() {
 
-    this.http.get('tradeapp/Customer/detail', {id: this.cus_ID})
+    this.http.get('tradeapp/Customer/detail', { id: this.cus_ID })
       .then(res => {
 
         this.currCustomer = res.data;
@@ -53,7 +53,7 @@ export class CustomerDetailPage {
    */
   editCustomer() {
 
-    let modal = this.modalCtrl.create('CustomerEditPage', {id: this.cus_ID});
+    let modal = this.modalCtrl.create('CustomerEditPage', { id: this.cus_ID });
     modal.present();
 
     modal.onWillDismiss(hasUpdate => {

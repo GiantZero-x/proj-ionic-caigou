@@ -13,4 +13,4 @@ import { MeDetailPage } from './me-detail';
     MeDetailPage
   ]
 })
-export class MeDetailPageModule {}
+export class MeDetailPageModule { }

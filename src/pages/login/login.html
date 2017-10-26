@@ -8,7 +8,7 @@
   <div padding>
     <ion-row>
       <ion-col>
-        <img class="logo" [src]="logoImage"/>
+        <img class="logo" [src]="logoImage" />
       </ion-col>
     </ion-row>
     <ion-row>
@@ -17,25 +17,14 @@
           <ion-list inset class="no-border text-justify-list">
             <ion-item>
               <ion-label>用户名</ion-label>
-              <ion-input type="text"
-                         [(ngModel)]="loginInfo.username"
-                         name="username"
-                         #username="ngModel"
-                         spellcheck="false"
-                         autocapitalize="off"
-                         required
-                         clearInput></ion-input>
+              <ion-input type="text" [(ngModel)]="loginInfo.username" name="username" #username="ngModel" spellcheck="false" autocapitalize="off"
+                required clearInput></ion-input>
             </ion-item>
             <p [show-err]="[username.errors, submitted]"></p>
             <ion-item>
               <ion-label>密码</ion-label>
-              <ion-input type="password"
-                         [(ngModel)]="loginInfo.password"
-                         name="password"
-                         #password="ngModel"
-                         [clearOnEdit]="false"
-                         required
-                         clearInput></ion-input>
+              <ion-input type="password" [(ngModel)]="loginInfo.password" name="password" #password="ngModel" [clearOnEdit]="false" required
+                clearInput></ion-input>
             </ion-item>
             <p [show-err]="[password.errors, submitted]"></p>
           </ion-list>
@@ -56,4 +45,3 @@
     </ion-row>
   </div>
 </ion-content>
-

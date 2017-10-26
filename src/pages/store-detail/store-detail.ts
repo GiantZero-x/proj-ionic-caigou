@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ModalController, Events} from 'ionic-angular';
-import {HttpProvider} from "../../providers/http";
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController, Events } from 'ionic-angular';
+import { HttpProvider } from "../../providers/http";
 
 /**
  * Generated class for the StoreDetailPage page.
@@ -22,10 +22,10 @@ export class StoreDetailPage {
   currId: string;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public modalCtrl: ModalController,
-              public events: Events,
-              public http: HttpProvider) {
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    public events: Events,
+    public http: HttpProvider) {
     this.currId = navParams.data.id;
   }
 
@@ -40,7 +40,7 @@ export class StoreDetailPage {
    * 获取详情
    */
   getDetail() {
-    this.http.get('tradeapp/Suppliers_Admin/detail', {id: this.currId})
+    this.http.get('tradeapp/Suppliers_Admin/detail', { id: this.currId })
       .then(res => {
         this.currStore = res.data;
       })
@@ -49,7 +49,7 @@ export class StoreDetailPage {
 
   // 编辑
   editStore() {
-    let modal = this.modalCtrl.create('StoreEditPage', {id: this.currId});
+    let modal = this.modalCtrl.create('StoreEditPage', { id: this.currId });
     modal.present();
 
     modal.onWillDismiss(hasUpdate => {

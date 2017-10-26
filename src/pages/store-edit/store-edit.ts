@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController, ActionSheetController} from 'ionic-angular';
-import {NgForm} from '@angular/forms';
-import {PictureProvider} from "../../providers/picture";
-import {ToastServiceProvider} from "../../providers/toast-service"
-import {Helper} from "../../app/helper";
-import {HttpProvider} from "../../providers/http";
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, ViewController, ActionSheetController } from 'ionic-angular';
+import { NgForm } from '@angular/forms';
+import { PictureProvider } from "../../providers/picture";
+import { ToastServiceProvider } from "../../providers/toast-service"
+import { Helper } from "../../app/helper";
+import { HttpProvider } from "../../providers/http";
 
 /**
  * Generated class for the StoreEditPage page.
@@ -36,14 +36,14 @@ export class StoreEditPage {
   currId: string;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public viewCtrl: ViewController,
-              public toast: ToastServiceProvider,
-              public camera: PictureProvider,
-              public actionSheetCtrl: ActionSheetController,
-              public picService: PictureProvider,
-              public http: HttpProvider,
-              public helper: Helper) {
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
+    public toast: ToastServiceProvider,
+    public camera: PictureProvider,
+    public actionSheetCtrl: ActionSheetController,
+    public picService: PictureProvider,
+    public http: HttpProvider,
+    public helper: Helper) {
     this.currId = navParams.data.id;
     Object.assign(this.editStore, navParams.data.scanData)
   }
@@ -57,7 +57,7 @@ export class StoreEditPage {
    * 获取详情
    */
   getDetail() {
-    this.http.get('tradeapp/Suppliers_Admin/detail', {id: this.currId})
+    this.http.get('tradeapp/Suppliers_Admin/detail', { id: this.currId })
       .then(res => {
         res.data.link_mans[0] || res.data.link_mans.push({
           link_name: null,
@@ -126,7 +126,7 @@ export class StoreEditPage {
           text: '相册上传',
           icon: 'albums',
           handler: () => {
-            this.picService.choosePicture({scan: true})
+            this.picService.choosePicture({ scan: true })
               .then(res => res && this.helper.copyObj(true, this.editStore, res))
               .catch(err => console.log(err))
           }

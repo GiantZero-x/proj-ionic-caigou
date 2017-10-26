@@ -13,4 +13,4 @@ import { CustomerPage } from './customer';
     CustomerPage
   ]
 })
-export class CustomerPageModule {}
+export class CustomerPageModule { }

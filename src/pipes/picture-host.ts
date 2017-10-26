@@ -1,5 +1,5 @@
-import {Pipe, PipeTransform} from '@angular/core';
-import {Helper} from "../app/helper";
+import { Pipe, PipeTransform } from '@angular/core';
+import { Helper } from "../app/helper";
 
 /**
  * Generated class for the PictureHostPipe pipe.

@@ -1,6 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams, Events, ModalController, Content} from 'ionic-angular';
-import {HttpProvider} from "../../providers/http"
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Events, ModalController, Content } from 'ionic-angular';
+import { HttpProvider } from "../../providers/http"
 
 /**
  * Generated class for the StoreListPage page.
@@ -25,13 +25,13 @@ export class OrderStorePage {
 
   public cusId: string; // 客户id
 
-  public orderId:string; //表单id
+  public orderId: string; //表单id
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public events: Events,
-              public modalCtrl: ModalController,
-              public http: HttpProvider,) {
+    public navParams: NavParams,
+    public events: Events,
+    public modalCtrl: ModalController,
+    public http: HttpProvider, ) {
     this.cusId = navParams.data.cusId;
     this.orderId = navParams.data.orderId;
   }
@@ -97,7 +97,7 @@ export class OrderStorePage {
    */
   start() {
     this.navCtrl.popToRoot().then(() => {
-      this.navCtrl.push('AroundProductPage', {cusId: this.cusId})
+      this.navCtrl.push('AroundProductPage', { cusId: this.cusId })
     })
   }
 

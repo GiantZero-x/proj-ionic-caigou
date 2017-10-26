@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ProductEditPage } from './product-edit';
-import {Shared} from "../../app/shared";
+import { Shared } from "../../app/shared";
 
 @NgModule({
   declarations: [

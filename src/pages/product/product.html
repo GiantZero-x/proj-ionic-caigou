@@ -34,10 +34,7 @@
   </ng-template>
 
   <ion-toolbar no-border-top>
-    <ion-searchbar
-      [(ngModel)]="searchKey"
-      (ionInput)="doRefresh()"
-      placeholder="{{isCheck ? '产品名' : '产品名 / 商铺名' }}">
+    <ion-searchbar [(ngModel)]="searchKey" (ionInput)="doRefresh()" placeholder="{{isCheck ? '产品名' : '产品名 / 商铺名' }}">
     </ion-searchbar>
   </ion-toolbar>
 
@@ -46,11 +43,7 @@
 
 <ion-content>
   <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown"
-                           pullingText="下拉刷新"
-                           refreshingSpinner="circles"
-                           refreshingText="正在刷新..."
-    ></ion-refresher-content>
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="正在刷新..."></ion-refresher-content>
   </ion-refresher>
   <ion-list radio-group [(ngModel)]="checkId">
 
@@ -59,8 +52,7 @@
         <ion-label>{{product.pro_name || '暂无品名'}}
           <small class="text-danger">(单价：{{product.pro_price || '暂无单价'}})</small>
         </ion-label>
-        <small ion-note item-end class="text-muted">{{product.suppliers_admin ? product.suppliers_admin.cus_short_name :
-          '暂无供应商'}}
+        <small ion-note item-end class="text-muted">{{product.suppliers_admin ? product.suppliers_admin.cus_short_name : '暂无供应商'}}
         </small>
         <ion-radio [value]="product.id"></ion-radio>
       </ion-item>
@@ -82,9 +74,7 @@
     </ion-item>
   </ion-list>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="10%" [enabled]="hasMore">
-    <ion-infinite-scroll-content loadingSpinner="bubbles"
-                                 loadingText="正在加载..."
-    ></ion-infinite-scroll-content>
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载..."></ion-infinite-scroll-content>
   </ion-infinite-scroll>
 
 </ion-content>

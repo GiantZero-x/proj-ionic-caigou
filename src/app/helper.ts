@@ -2,14 +2,12 @@
  * 辅助方法
  * */
 
-import {Injectable} from '@angular/core';
-import {ToastServiceProvider} from "../providers/toast-service";
+import { Injectable } from '@angular/core';
+import { ToastServiceProvider } from "../providers/toast-service";
 
 @Injectable()
 export class Helper {
-  /* TODO 切换接口 */
-  // protected URL = 'http://122.226.54.202:808/'; // 测试
-  protected URL = 'https://www.sumsoarbest.com/api/';  // 生产
+  protected URL = 'http://127.0.0.1:3000';
   // 全局状态
   _state = {
     API_URL: {
@@ -18,7 +16,7 @@ export class Helper {
       file: this.URL + 'tradeapp/Upload/index',
       card: 'tradeapp/business_card/index',
       localFileDir: 'caigoubao',
-      update: 'http://www.shangxiangchina.com/version/cgb.php'
+      update: 'tradeapp/version'
     },
     VALID: {
       common: {
@@ -160,7 +158,7 @@ export class Helper {
    */
   public getType(o) {
     let _t;
-    return ((_t = typeof(o)) == "object" ? Object.prototype.toString.call(o).slice(8, -1) : _t).toLowerCase();
+    return ((_t = typeof (o)) == "object" ? Object.prototype.toString.call(o).slice(8, -1) : _t).toLowerCase();
   }
 
   public validField(obj) {

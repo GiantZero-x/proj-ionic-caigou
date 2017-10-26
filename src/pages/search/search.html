@@ -10,11 +10,7 @@
     <ion-title>查询</ion-title>
   </ion-navbar>
   <ion-toolbar no-border-top>
-    <ion-searchbar [(ngModel)]="searchKey"
-                   placeholder="产品 / 商铺 / 客户"
-                   (ionInput)="handleSearch($event)"
-                   #mainSearch
-    ></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchKey" placeholder="产品 / 商铺 / 客户" (ionInput)="handleSearch($event)" #mainSearch></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -25,8 +21,7 @@
       <ion-item-divider sticky color="light">
         <ion-label>我的产品</ion-label>
       </ion-item-divider>
-      <ion-item *ngFor="let product of searchBox.Product" [navPush]="'ProductDetailPage'"
-                [navParams]="{id: product.id}">
+      <ion-item *ngFor="let product of searchBox.Product" [navPush]="'ProductDetailPage'" [navParams]="{id: product.id}">
         <ion-thumbnail item-start>
           <img [src]="product.img | pictureHost">
         </ion-thumbnail>
@@ -61,8 +56,7 @@
     </ion-item-group>
 
   </ion-list>
-  <p class="text-muted" text-center
-     [hidden]="searchBox.Customer.length !== 0 || searchBox.Suppliers_Admin.length !==0 || searchBox.Product.length !== 0">
+  <p class="text-muted" text-center [hidden]="searchBox.Customer.length !== 0 || searchBox.Suppliers_Admin.length !==0 || searchBox.Product.length !== 0">
     {{hasSearch ? '未查询到相关记录。' : '输入你想找的'}}
   </p>
 

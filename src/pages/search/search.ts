@@ -1,7 +1,7 @@
-import {Component, ViewChild} from '@angular/core';
-import {IonicPage, Searchbar, Events} from 'ionic-angular';
-import {Keyboard} from '@ionic-native/keyboard';
-import {HttpProvider} from "../../providers/http";
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, Searchbar, Events } from 'ionic-angular';
+import { Keyboard } from '@ionic-native/keyboard';
+import { HttpProvider } from "../../providers/http";
 
 @IonicPage()
 @Component({
@@ -24,8 +24,8 @@ export class SearchPage {
   @ViewChild('mainSearch') mainSearch: Searchbar;
 
   constructor(public keyboard: Keyboard,
-              public events: Events,
-              public http: HttpProvider) {
+    public events: Events,
+    public http: HttpProvider) {
     // 数据修改后更新列表
     this.events.subscribe('updateList:Product', () => this.getData('Product'));
     this.events.subscribe('updateList:Customer', () => this.getData('Customer'));
@@ -56,7 +56,7 @@ export class SearchPage {
     let key = this.searchKey.trim();
     if (key) {
       this.hasSearch = true;
-      this.http.get(`tradeapp/${type}/index`, {page: 1, page_size: 10000, searchKey: key})
+      this.http.get(`tradeapp/${type}/index`, { page: 1, page_size: 10000, searchKey: key })
         .then(res => this.searchBox[type] = res.data.data)
     } else {
       this.hasSearch = false;

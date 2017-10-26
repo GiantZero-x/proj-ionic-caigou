@@ -1,5 +1,5 @@
-import {Directive, HostListener, Input} from '@angular/core';
-import {ModalController, AlertController} from 'ionic-angular';
+import { Directive, HostListener, Input } from '@angular/core';
+import { ModalController, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the PictureSliderDirective directive.
@@ -13,7 +13,7 @@ import {ModalController, AlertController} from 'ionic-angular';
 export class PictureSliderDirective {
 
   constructor(public modalCtrl: ModalController,
-              public alertCtrl: AlertController) {
+    public alertCtrl: AlertController) {
   }
 
   @Input('picture-slider') picArr: any; // [索引:string, 图片列表:array, 是否可删除:boolean]

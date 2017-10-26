@@ -9,10 +9,10 @@
 $ npm install -g ionic cordova
 
 // checkout 项目
-checkout this svn svn://192.168.17.50/zzh0605/
+git clone git@github.com:GiantZero-x/proj-ionic-caigou.git
 
 // cmd进入项目目录
-$ cd zzh0605
+$ cd proj-ionic-caigou
 
 // 安装 NPM 依赖
 $ npm i
@@ -28,24 +28,24 @@ $ ionic serve
 
 #### ionic使用ImagePicker插件问题!!
 
-相关依赖没有记录在package.json文件中, 因为添加了一个不存在的包; 在执行完`ionic cordova prepare` 后执行 
+相关依赖没有记录在package.json文件中, 因为添加了一个不存在的包; 在执行完`ionic cordova prepare` 后执行
 
   `ionic cordova plugin add cordova-plugin-telerik-imagepicker --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="image picker" && npm install --save @ionic-native/image-picker
 `
-  
+
   重新安装插件但是之后要将config.xml和package.json文件还原,任然不记录依赖
-  
+
 #### ionic使用ImagePicker插件中文显示
  ```bash
  1. 找到目录platforms/android/res有国际化的几个文件夹
- 
+
      values-de
      ...
- 
+
  2. 将此文件夹复制过去
- 
+
  3. 数量超限未改,在 platforms\android\src\com\synconset\MultiImageChooserActivity.java:200 处
- 
+
      .setTitle("最大选取数 " + maxImageCount + " Photos")
      .setMessage("此次您最多能够选取 " + maxImageCount + " 张图片。")
      .setPositiveButton("确定", new DialogInterface.OnClickListener() {

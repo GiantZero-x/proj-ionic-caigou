@@ -1,13 +1,13 @@
-import {Component, ViewChild} from '@angular/core';
-import {Platform, Nav, Events, AlertController} from 'ionic-angular';
-import {StatusBar} from '@ionic-native/status-bar';
-import {SplashScreen} from '@ionic-native/splash-screen';
-import {Storage} from "@ionic/storage";
-import {Network} from '@ionic-native/network';
-import {AppVersion} from '@ionic-native/app-version';
-import {TabsPage} from '../pages/tabs/tabs';
-import {HttpProvider} from "../providers/http";
-import {ImagePicker} from '@ionic-native/image-picker';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, Nav, Events, AlertController } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { Storage } from "@ionic/storage";
+import { Network } from '@ionic-native/network';
+import { AppVersion } from '@ionic-native/app-version';
+import { TabsPage } from '../pages/tabs/tabs';
+import { HttpProvider } from "../providers/http";
+import { ImagePicker } from '@ionic-native/image-picker';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
@@ -19,16 +19,16 @@ export class MyApp {
   rootPage: any;
 
   constructor(public platform: Platform,
-              public statusBar: StatusBar,
-              public splashScreen: SplashScreen,
-              public storage: Storage,
-              public events: Events,
-              public appVersion: AppVersion,
-              public http: HttpProvider,
-              public network: Network,
-              public alertCtrl: AlertController,
-              public iab: InAppBrowser ,
-              public imagePicker: ImagePicker) {
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public storage: Storage,
+    public events: Events,
+    public appVersion: AppVersion,
+    public http: HttpProvider,
+    public network: Network,
+    public alertCtrl: AlertController,
+    public iab: InAppBrowser,
+    public imagePicker: ImagePicker) {
     // 检查用户是否已经看过该教程
     this.storage.get('hasSeenTutorial')
       .then(hasSeenTutorial => {
@@ -106,23 +106,6 @@ export class MyApp {
     let isIos = this.platform.is('ios');
     this.http.checkUpdate()
       .then((data: any) => {
-        /*
-      * let data = {
-      sitename: '采购宝',    //  站点名称
-      siteurl: 'http://www.shangxiangchina.com',  //  站点地址
-      uploadfile: 'uploads',  //  上传文件夹
-      updateFlag: 1,  //  更新方式: 1 => 普通更新, 2 => 强制更新
-      version: '1.1.29',  //  版本名,
-      versionCode: '202',  //  版本号,
-      downuurl: 'http://www.shangxiangchina.com/version/sxt.apk', // APK下载地址
-      app_store_url:'https://itunes.apple.com/cn/app/%E5%95%86%E7%BF%94%E7%AE%A1%E7%90%86/id1010601786?mt=8',
-      description: '1.修改了图像上传问题\n2.客户确认页面\n3.确认付款提醒等功能\n    ...',  // 更新说明
-      copy: ' 2017版权所有',    //  版权信息
-      adds: '浙江省义乌市',      //  公司地址
-      tel: '4008-579-288',    //  公司电话
-      qq: '2851278107',       //  客服QQ
-    }
-    */
         this.appVersion.getVersionCode()
           .then(version => {
             console.log("version=====本机>>>" + version + "====>>服务器" + data.versionCode + '-' + data.version);

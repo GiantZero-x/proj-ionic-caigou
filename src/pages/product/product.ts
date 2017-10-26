@@ -1,6 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams, ModalController, Events, Content, ViewController} from 'ionic-angular';
-import {HttpProvider} from "../../providers/http";
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController, Events, Content, ViewController } from 'ionic-angular';
+import { HttpProvider } from "../../providers/http";
 
 /**
  * Generated class for the ProductPage page.
@@ -27,11 +27,11 @@ export class ProductPage {
   public checkId: string;      //  选中id
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public events: Events,
-              public modalCtrl: ModalController,
-              public viewCtrl: ViewController,
-              public http: HttpProvider,) {
+    public navParams: NavParams,
+    public events: Events,
+    public modalCtrl: ModalController,
+    public viewCtrl: ViewController,
+    public http: HttpProvider, ) {
 
     // 判断查看列表类型
     this.isCheck = Boolean(navParams.data.isCheck);
@@ -115,14 +115,14 @@ export class ProductPage {
    * @param id  {String}  产品id
    */
   public handleCheck(id) {
-    this.isCheck || this.navCtrl.push('ProductDetailPage', {id: id , isEdit: false})
+    this.isCheck || this.navCtrl.push('ProductDetailPage', { id: id, isEdit: false })
   }
 
   /**
    * 添加
    */
   public handleAdd() {
-    let modal = this.modalCtrl.create('ProductEditPage', {hideStore: this.navParams.data.hideStore});
+    let modal = this.modalCtrl.create('ProductEditPage', { hideStore: this.navParams.data.hideStore });
     modal.present();
 
     modal.onDidDismiss(id => id && this.doRefresh());

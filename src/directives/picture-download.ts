@@ -1,6 +1,6 @@
-import {Directive, HostListener, ElementRef, Input} from '@angular/core';
-import {AlertController} from 'ionic-angular';
-import {HttpProvider} from "../providers/http";
+import { Directive, HostListener, ElementRef, Input } from '@angular/core';
+import { AlertController } from 'ionic-angular';
+import { HttpProvider } from "../providers/http";
 
 /**
  * Generated class for the PictureDownloadDirective directive.
@@ -14,8 +14,8 @@ import {HttpProvider} from "../providers/http";
 export class PictureDownloadDirective {
 
   constructor(private el: ElementRef,
-              private http: HttpProvider,
-              private alertCtrl: AlertController) {
+    private http: HttpProvider,
+    private alertCtrl: AlertController) {
   }
 
   @Input('picture-download') fileName: string;

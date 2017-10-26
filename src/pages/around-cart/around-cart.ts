@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   IonicPage,
   NavController,
@@ -7,8 +7,8 @@ import {
   AlertController,
   Content
 } from 'ionic-angular';
-import {ToastServiceProvider} from "../../providers/toast-service";
-import {HttpProvider} from "../../providers/http";
+import { ToastServiceProvider } from "../../providers/toast-service";
+import { HttpProvider } from "../../providers/http";
 
 
 /**
@@ -44,11 +44,11 @@ export class AroundCartPage {
   cusId: string;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public modalCtrl: ModalController,
-              public alertCtrl: AlertController,
-              public toastCtrl: ToastServiceProvider,
-              public http: HttpProvider) {
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    public alertCtrl: AlertController,
+    public toastCtrl: ToastServiceProvider,
+    public http: HttpProvider) {
     this.cusId = navParams.data.cusId;
     this.currentStore = navParams.data.store;
   }
@@ -82,7 +82,7 @@ export class AroundCartPage {
 
   // 编辑产品
   editProduct(i) {
-    let modal = this.modalCtrl.create('ProductEditPage', {id: this.currentCart[i].id, hideStore: true});
+    let modal = this.modalCtrl.create('ProductEditPage', { id: this.currentCart[i].id, hideStore: true });
     modal.present();
 
     modal.onWillDismiss(hasUpdate => {
@@ -118,7 +118,7 @@ export class AroundCartPage {
 
   // 根据索引更新产品
   updateProByIndex(i) {
-    this.http.get('tradeapp/Product/detail', {id: this.currentCart[i].id})
+    this.http.get('tradeapp/Product/detail', { id: this.currentCart[i].id })
       .then(res => {
         res.data.img = res.data.img ? res.data.img.split('|') : [];
         Object.assign(this.currentCart[i], res.data);
@@ -130,7 +130,7 @@ export class AroundCartPage {
    * 获取商铺详情
    */
   getStoDetail() {
-    this.http.get('tradeapp/Suppliers_Admin/detail', {id: this.currentStore.cus_id})
+    this.http.get('tradeapp/Suppliers_Admin/detail', { id: this.currentStore.cus_id })
       .then(res => {
         this.currentStore = res.data;
       })
@@ -141,7 +141,7 @@ export class AroundCartPage {
    * 编辑商铺
    */
   editStore() {
-    let modal = this.modalCtrl.create('StoreEditPage', {id: this.currentStore.cus_id});
+    let modal = this.modalCtrl.create('StoreEditPage', { id: this.currentStore.cus_id });
     modal.present();
 
     modal.onWillDismiss(hasUpdate => {
@@ -177,7 +177,7 @@ export class AroundCartPage {
       message: '选中的 <strong>' + this.haveChecked.length + '</strong> 项商品移除后将不可恢复.',
       cssClass: 'text-danger',
       buttons: [
-        {text: '取消'},
+        { text: '取消' },
         {
           text: '确定',
           handler: () => {

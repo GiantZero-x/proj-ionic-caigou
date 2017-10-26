@@ -6,82 +6,74 @@
 -->
 <ion-header>
 
-    <ion-toolbar *ngIf="isCheck; else listTitle">
-        <ion-buttons start>
-            <button ion-button (tap)="dismiss()">取消</button>
-        </ion-buttons>
+  <ion-toolbar *ngIf="isCheck; else listTitle">
+    <ion-buttons start>
+      <button ion-button (tap)="dismiss()">取消</button>
+    </ion-buttons>
 
-        <ion-title>选择商铺</ion-title>
+    <ion-title>选择商铺</ion-title>
 
-        <ion-buttons end>
-            <button ion-button (tap)="dismiss(true)" strong>确定&nbsp;&nbsp;|</button>
-            <button ion-button icon-only (tap)="handleAdd()">
-                <ion-icon name="add"></ion-icon>
-            </button>
-        </ion-buttons>
-    </ion-toolbar>
+    <ion-buttons end>
+      <button ion-button (tap)="dismiss(true)" strong>确定&nbsp;&nbsp;|</button>
+      <button ion-button icon-only (tap)="handleAdd()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 
-    <ng-template #listTitle>
-        <ion-navbar>
-            <ion-title>我的商铺</ion-title>
+  <ng-template #listTitle>
+    <ion-navbar>
+      <ion-title>我的商铺</ion-title>
 
-            <ion-buttons end>
-                <button ion-button icon-only (tap)="handleAdd()">
-                    <ion-icon name="add"></ion-icon>
-                </button>
-            </ion-buttons>
-        </ion-navbar>
-    </ng-template>
-    <!--toolbar-->
-    <ion-toolbar no-border-top>
-        <ion-searchbar
-                [(ngModel)]="searchKey"
-                (ionInput)="doRefresh()"
-                placeholder="商铺名 / 电话">
-        </ion-searchbar>
-    </ion-toolbar>
+      <ion-buttons end>
+        <button ion-button icon-only (tap)="handleAdd()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ng-template>
+  <!--toolbar-->
+  <ion-toolbar no-border-top>
+    <ion-searchbar [(ngModel)]="searchKey" (ionInput)="doRefresh()" placeholder="商铺名 / 电话">
+    </ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <!--刷新-->
-    <ion-refresher (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content pullingIcon="arrow-dropdown"
-                               pullingText="下拉刷新"
-                               refreshingSpinner="circles"
-                               refreshingText="正在刷新....">
-        </ion-refresher-content>
-    </ion-refresher>
-    <!--list-->
-    <ion-list radio-group [(ngModel)]="checkId">
+  <!--刷新-->
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="正在刷新....">
+    </ion-refresher-content>
+  </ion-refresher>
+  <!--list-->
+  <ion-list radio-group [(ngModel)]="checkId">
 
-        <div *ngIf="isCheck; else item">
-            <ion-item *ngFor="let store of list">
-                <ion-label>{{store.cus_short_name}}</ion-label>
-                <small ion-note item-end class="text-muted">{{store.link_mans[0] && store.link_mans[0].link_phone}}
-                </small>
-                <ion-radio [value]="store.cus_id"></ion-radio>
-            </ion-item>
-        </div>
+    <div *ngIf="isCheck; else item">
+      <ion-item *ngFor="let store of list">
+        <ion-label>{{store.cus_short_name}}</ion-label>
+        <small ion-note item-end class="text-muted">{{store.link_mans[0] && store.link_mans[0].link_phone}}
+        </small>
+        <ion-radio [value]="store.cus_id"></ion-radio>
+      </ion-item>
+    </div>
 
-        <ng-template #item>
-            <ion-item *ngFor="let store of list" (tap)="handleCheck(store.cus_id)">
-                <ion-thumbnail item-start>
-                    <img [src]="store.cus_picpath | pictureHost">
-                </ion-thumbnail>
-                <h2>{{store.cus_short_name}}</h2>
-                <p>{{store.link_mans[0] && store.link_mans[0].link_phone}}</p>
-                <p>{{store.cus_addr}}</p>
-            </ion-item>
-        </ng-template>
-        <p [hidden]="!hasMore && list.length === 0" class="scroll-end">已加载全部</p>
-        <ion-item text-center [hidden]="list.length !==0">
-            <button clear ion-button (tap)="handleAdd()">暂无商铺，添加一个?</button>
-        </ion-item>
-    </ion-list>
+    <ng-template #item>
+      <ion-item *ngFor="let store of list" (tap)="handleCheck(store.cus_id)">
+        <ion-thumbnail item-start>
+          <img [src]="store.cus_picpath | pictureHost">
+        </ion-thumbnail>
+        <h2>{{store.cus_short_name}}</h2>
+        <p>{{store.link_mans[0] && store.link_mans[0].link_phone}}</p>
+        <p>{{store.cus_addr}}</p>
+      </ion-item>
+    </ng-template>
+    <p [hidden]="!hasMore && list.length === 0" class="scroll-end">已加载全部</p>
+    <ion-item text-center [hidden]="list.length !==0">
+      <button clear ion-button (tap)="handleAdd()">暂无商铺，添加一个?</button>
+    </ion-item>
+  </ion-list>
 
-    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="10%" [enabled]="hasMore">
-        <ion-infinite-scroll-content loadingSpinner="bubbles"
-                                     loadingText="正在加载..."
-        ></ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="10%" [enabled]="hasMore">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

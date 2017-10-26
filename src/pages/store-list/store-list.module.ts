@@ -13,4 +13,4 @@ import { Shared } from "../../app/shared";
     Shared
   ],
 })
-export class StoreListPageModule {}
+export class StoreListPageModule { }

@@ -1,6 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams, ModalController, Events, Content} from 'ionic-angular';
-import {HttpProvider} from "../../providers/http";
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController, Events, Content } from 'ionic-angular';
+import { HttpProvider } from "../../providers/http";
 
 /**
  * Generated class for the AroundCustomerPage page.
@@ -22,10 +22,10 @@ export class AroundCustomerPage {
   public searchKey: string = ''; //  关键词
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public events: Events,
-              public modalCtrl: ModalController,
-              public http: HttpProvider,) {
+    public navParams: NavParams,
+    public events: Events,
+    public modalCtrl: ModalController,
+    public http: HttpProvider, ) {
   }
 
   /**
@@ -33,7 +33,7 @@ export class AroundCustomerPage {
    */
   public getList() {
     return new Promise((resolve, reject) => {
-      this.http.get(`tradeapp/buy_car/index`, {searchKey: this.searchKey.trim()})
+      this.http.get(`tradeapp/buy_car/index`, { searchKey: this.searchKey.trim() })
         .then(res => {
           this.list = res.data;
           resolve();
@@ -73,7 +73,7 @@ export class AroundCustomerPage {
    */
   start() {
     this.navCtrl.popToRoot().then(() => {
-      this.navCtrl.push('CustomerPage', {isCheck: true})
+      this.navCtrl.push('CustomerPage', { isCheck: true })
     })
   }
 

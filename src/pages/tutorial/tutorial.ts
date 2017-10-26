@@ -1,6 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, Slides} from 'ionic-angular';
-import {Storage} from '@ionic/storage';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, Slides } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the TutorialPage page.
@@ -24,7 +24,7 @@ export class TutorialPage {
   ];
 
   constructor(public navCtrl: NavController,
-              private storage: Storage) {
+    private storage: Storage) {
   }
 
   /**

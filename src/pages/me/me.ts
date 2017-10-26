@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {Events, AlertController} from 'ionic-angular';
-import {Storage} from '@ionic/storage';
-import {AppVersion} from '@ionic-native/app-version';
-import {HttpProvider} from "../../providers/http";
+import { Component } from '@angular/core';
+import { Events, AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { AppVersion } from '@ionic-native/app-version';
+import { HttpProvider } from "../../providers/http";
 
 /**
  * Generated class for the MePage page.
@@ -22,10 +22,10 @@ export class MePage {
   versionCode: string = '';
 
   constructor(public storage: Storage,
-              public events: Events,
-              public alertCtrl: AlertController,
-              public appVersion: AppVersion,
-              public http: HttpProvider) {
+    public events: Events,
+    public alertCtrl: AlertController,
+    public appVersion: AppVersion,
+    public http: HttpProvider) {
   }
 
   ionViewDidLoad() {
@@ -45,7 +45,7 @@ export class MePage {
     let alert = this.alertCtrl.create({
       title: '确定退出登陆?',
       buttons: [
-        {text: '取消'},
+        { text: '取消' },
         {
           text: '确定',
           handler: () => {

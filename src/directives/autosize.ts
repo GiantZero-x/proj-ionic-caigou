@@ -1,5 +1,5 @@
-import {Directive, ElementRef, HostListener, OnInit, Input} from '@angular/core';
-import {ToastServiceProvider} from "../providers/toast-service";
+import { Directive, ElementRef, HostListener, OnInit, Input } from '@angular/core';
+import { ToastServiceProvider } from "../providers/toast-service";
 
 /**
  * Generated class for the AutosizeDirective directive.
@@ -22,8 +22,8 @@ export class AutosizeDirective implements OnInit {
   @Input('maxlength') maxLength: any; // 字符串最大长度
 
   constructor(public element: ElementRef,
-              public toast: ToastServiceProvider
-              ) {
+    public toast: ToastServiceProvider
+  ) {
   }
 
 
@@ -33,7 +33,7 @@ export class AutosizeDirective implements OnInit {
     console.log(1);
   }
 
-  ngAfterContentChecked():void {
+  ngAfterContentChecked(): void {
     setTimeout(() => this.adjust(), 1000);
   }
 
@@ -62,6 +62,6 @@ export class AutosizeDirective implements OnInit {
     textArea.style.overflow = 'hidden';
     textArea.style.height = 'auto';
     textArea.style.height = textArea.scrollHeight + "px";
-}
+  }
 
 }

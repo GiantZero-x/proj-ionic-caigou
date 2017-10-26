@@ -8,7 +8,7 @@
   <ion-slides #slides pager>
 
     <ion-slide *ngFor="let imgUrl of imgBox;last as isLast">
-      <img [src]="imgUrl" class="slide-image"/>
+      <img [src]="imgUrl" class="slide-image" />
       <button *ngIf="isLast" ion-button icon-right large clear (tap)="startApp()" class="start-btn">
         立即体验
       </button>
